@@ -13,7 +13,6 @@ public class UpdateGPSText : MonoBehaviour
     {
         string success = "";
 
-        timesUpdated++; // TODO get rid of this
         stepsSinceUpdate++;
         if (stepsSinceUpdate >= maxStep)
         {
