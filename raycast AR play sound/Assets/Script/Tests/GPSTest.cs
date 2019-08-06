@@ -35,9 +35,6 @@ namespace Tests
         [Test]
         public void orientationColinearTest()
         {
-            GPSPoint point0 = new GPSPoint(0, 0);
-            GPSPoint point1 = new GPSPoint(1, 1);
-            GPSPoint point2 = new GPSPoint(2, 2);
             Assert.AreEqual(0, polygon.orientation(east, west, center));
         }
 
@@ -46,5 +43,19 @@ namespace Tests
         {
             Assert.AreEqual(new GPSPoint(1, 1), north + east);
         }
+
+        [Test]
+        public void multiplicationTest()
+        {
+            Assert.AreEqual(new GPSPoint(2, 2), 2 * (new GPSPoint(1, 1)));
+        }
+
+        [Test]
+        public void orientationColinearDiagonalTest()
+        {
+            GPSPoint diagonal = new GPSPoint(1, 1);
+            Assert.AreEqual(0, polygon.orientation(center, diagonal, 2 * diagonal));
+        }
+        // TODO throw error when two or more points are coincident
     }
 }

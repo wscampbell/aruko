@@ -19,6 +19,11 @@ public class GPSPoint
         return new GPSPoint(point1.x + point2.x, point1.y + point2.y);
     }
 
+    public static GPSPoint operator *(double scalar, GPSPoint point)
+    {
+        return new GPSPoint(point.x * scalar, point.y * scalar);
+    }
+
     public override bool Equals(System.Object obj)
     {
         if ((obj == null) || !this.GetType().Equals(obj.GetType()))
