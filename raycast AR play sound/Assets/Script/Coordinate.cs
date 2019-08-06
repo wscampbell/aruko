@@ -16,9 +16,6 @@ public class Coordinate
 
     public bool checkWithin(double inLat, double inLong)
     {
-        return inLat < this.latitude + this.radius && inLong < this.longitude + this.radius && inLat > this.latitude - this.radius && inLong > this.longitude + this.radius;
+        return Math.Pow(radius, 2) > Math.Pow(latitude - inLat, 2) + Math.Pow(longitude - inLong, 2);
     }
-
-
-
 }
