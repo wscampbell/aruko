@@ -11,6 +11,9 @@ public class UpdateGPSText : MonoBehaviour
 
     private void Update()
     {
+        string success = "";
+
+        timesUpdated++; // TODO get rid of this
         stepsSinceUpdate++;
         if (stepsSinceUpdate >= maxStep)
         {
@@ -18,7 +21,14 @@ public class UpdateGPSText : MonoBehaviour
             timesUpdated++; // TODO get rid of this
             GPS.instance.UpdatePosition();
         }
-        coordinates.text = "lat: " + GPS.instance.latitude.ToString() + " lon: " + GPS.instance.longitude.ToString();
-        timesUpdatedText.text = "Times updated: " + timesUpdated.ToString();
+
+        // TODO get rid of this
+        if (new Coordinate(34.979493, 135.964419).checkWithin(GPS.instance.latitude, GPS.instance.longitude))
+        {
+            success = "You are here.";
+        }
+        coordinates.text = "Lat: " + GPS.instance.latitude.ToString() + " Lon: " + GPS.instance.longitude.ToString();
+        timesUpdatedText.text = "times updated: " + timesUpdated.ToString() + success;
+        timesStartedText.text = "times started: " + GPS.instance.timesStarted.ToString();
     }
 }
