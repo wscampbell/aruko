@@ -23,19 +23,19 @@ namespace Tests
         [Test]
         public void orientationClockwiseTest()
         {
-            Assert.AreEqual(1, polygon.orientation(north, center, west));
+            Assert.AreEqual(1, GPSPolygon.orientation(north, center, west));
         }
 
         [Test]
         public void orientationCounterClockwiseTest()
         {
-            Assert.AreEqual(-1, polygon.orientation(west, center, north));
+            Assert.AreEqual(-1, GPSPolygon.orientation(west, center, north));
         }
 
         [Test]
         public void orientationColinearTest()
         {
-            Assert.AreEqual(0, polygon.orientation(east, west, center));
+            Assert.AreEqual(0, GPSPolygon.orientation(east, west, center));
         }
 
         [Test]
@@ -54,7 +54,7 @@ namespace Tests
         public void orientationColinearDiagonalTest()
         {
             GPSPoint diagonal = new GPSPoint(1, 1);
-            Assert.AreEqual(0, polygon.orientation(center, diagonal, 2 * diagonal));
+            Assert.AreEqual(0, GPSPolygon.orientation(center, diagonal, 2 * diagonal));
         }
         // TODO throw error when two or more points are coincident
     }
