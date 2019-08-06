@@ -19,7 +19,7 @@ public class Coordinate
         return Math.Pow(radius, 2) > Math.Pow(latitude - inLat, 2) + Math.Pow(longitude - inLong, 2);
     }
 
-    public string ToString()
+    public override string ToString()
     {
         return "Coordinate: lat=" + this.latitude + ", lon=" + this.longitude;
     }
