@@ -6,8 +6,9 @@ using UnityEngine;
 public class GPS : MonoBehaviour
 {
     public static GPS instance { set; get; }
-    public float latitude;
-    public float longitude;
+
+    public float latitude { get; private set; }
+    public float longitude { get; private set; }
     public float timesStarted = 0;
 
     private void Start()

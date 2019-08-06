@@ -1,17 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UpdateGPSText : MonoBehaviour
 {
     public Text coordinates;
     public Text timesUpdatedText;
-    public Text timesStartedText;
     public int timesUpdated = 0;
-
     private int stepsSinceUpdate = 0;
-
     private const int maxStep = 60;
 
     private void Update()
@@ -23,6 +18,7 @@ public class UpdateGPSText : MonoBehaviour
         if (stepsSinceUpdate >= maxStep)
         {
             stepsSinceUpdate = 0;
+            timesUpdated++; // TODO get rid of this
             GPS.instance.UpdatePosition();
         }
 
