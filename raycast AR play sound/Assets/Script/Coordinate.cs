@@ -18,4 +18,9 @@ public class Coordinate
     {
         return Math.Pow(radius, 2) > Math.Pow(latitude - inLat, 2) + Math.Pow(longitude - inLong, 2);
     }
+
+    public string toString()
+    {
+        return "Coordinate: lat=" + this.latitude + ", lon=" + this.longitude;
+    }
 }
