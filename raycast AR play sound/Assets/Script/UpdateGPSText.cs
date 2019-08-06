@@ -29,6 +29,5 @@ public class UpdateGPSText : MonoBehaviour
         }
         coordinates.text = "Lat: " + GPS.instance.latitude.ToString() + " Lon: " + GPS.instance.longitude.ToString();
         timesUpdatedText.text = "times updated: " + timesUpdated.ToString() + success;
-        timesStartedText.text = "times started: " + GPS.instance.timesStarted.ToString();
     }
 }
