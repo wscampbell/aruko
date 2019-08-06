@@ -1,15 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
-using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace Tests
 {
     public class GPSTest
     {
         GPSPolygon polygon = new GPSPolygon(new List<GPSPoint>());
-        GPSPoint east, west, north, center;
+        static GPSPoint east, west, north, south, center;
+
+
+        GPSPolygon triangle = new GPSPolygon(new List<GPSPoint>{
+            center, east, north
+        });
 
         [SetUp]
         public void before()
@@ -17,25 +19,26 @@ namespace Tests
             west = new GPSPoint(-1, 0);
             east = new GPSPoint(1, 0);
             north = new GPSPoint(0, 1);
+            south = new GPSPoint(0, -1);
             center = new GPSPoint(0, 0);
         }
 
         [Test]
         public void orientationClockwiseTest()
         {
-            Assert.AreEqual(1, GPSPolygon.orientation(north, center, west));
+            Assert.AreEqual(1, GeometryHelper.orientation(north, center, west));
         }
 
         [Test]
         public void orientationCounterClockwiseTest()
         {
-            Assert.AreEqual(-1, GPSPolygon.orientation(west, center, north));
+            Assert.AreEqual(-1, GeometryHelper.orientation(west, center, north));
         }
 
         [Test]
         public void orientationColinearTest()
         {
-            Assert.AreEqual(0, GPSPolygon.orientation(east, west, center));
+            Assert.AreEqual(0, GeometryHelper.orientation(east, west, center));
         }
 
         [Test]
@@ -54,7 +57,43 @@ namespace Tests
         public void orientationColinearDiagonalTest()
         {
             GPSPoint diagonal = new GPSPoint(1, 1);
-            Assert.AreEqual(0, GPSPolygon.orientation(center, diagonal, 2 * diagonal));
+            Assert.AreEqual(0, GeometryHelper.orientation(center, diagonal, 2 * diagonal));
+        }
+
+        [Test]
+        public void outsideTriangleTest()
+        {
+            Assert.False(GeometryHelper.inside(triangle, new GPSPoint(100, 100)));
+        }
+
+        [Test]
+        public void insideTriangleTest()
+        {
+            Assert.True(GeometryHelper.inside(triangle, new GPSPoint(0.1, 0.1)));
+        }
+
+        [Test]
+        public void noIntersectionTest()
+        {
+            Assert.False(GeometryHelper.intersect(north, west, south, east));
+        }
+
+        [Test]
+        public void intersectionTest()
+        {
+            Assert.True(GeometryHelper.intersect(north, south, east, west));
+        }
+
+        [Test]
+        public void borderIntersectionTest()
+        {
+            Assert.True(GeometryHelper.intersect(north, south, east, center));
+        }
+
+        [Test]
+        public void numIntersectionsTest()
+        {
+            Assert.AreEqual(1, GeometryHelper.countIntersections(triangle, new GPSPoint(0.1, 0.2)));
         }
         // TODO throw error when two or more points are coincident
     }

@@ -2,7 +2,7 @@
 
 public class GPSPolygon
 {
-    private List<GPSPoint> points = new List<GPSPoint>();
+    public List<GPSPoint> points { get; } = new List<GPSPoint>();
 
     public GPSPolygon(List<GPSPoint> points)
     {

@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-// TODO override GetHashCode if needed
+﻿// TODO override GetHashCode if needed
 public class GPSPoint
 {
     public double x { get; }
