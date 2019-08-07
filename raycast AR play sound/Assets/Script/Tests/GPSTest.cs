@@ -6,22 +6,25 @@ namespace Tests
     public class GPSTest
     {
         GPSPolygon polygon = new GPSPolygon(new List<GPSPoint>());
-        static GPSPoint east, west, north, south, center;
-
+        static GPSPoint west = new GPSPoint(-1, 0);
+        static GPSPoint east = new GPSPoint(1, 0);
+        static GPSPoint north = new GPSPoint(0, 1);
+        static GPSPoint south = new GPSPoint(0, -1);
+        static GPSPoint center = new GPSPoint(0, 0);
 
         GPSPolygon triangle = new GPSPolygon(new List<GPSPoint>{
             center, east, north
         });
 
-        [SetUp]
-        public void before()
-        {
-            west = new GPSPoint(-1, 0);
-            east = new GPSPoint(1, 0);
-            north = new GPSPoint(0, 1);
-            south = new GPSPoint(0, -1);
-            center = new GPSPoint(0, 0);
-        }
+        GPSPolygon square = new GPSPolygon(new List<GPSPoint>{
+            north + east, south + east, south + west, north + west
+        });
+
+        GPSPolygon notch = new GPSPolygon(new List<GPSPoint>{
+            north + east, south + east, 0.8 * north, south + west, north + west
+        });
+
+        // if you want a function to run before, use [SetUp]
 
         [Test]
         public void orientationClockwiseTest()
@@ -91,10 +94,28 @@ namespace Tests
         }
 
         [Test]
-        public void numIntersectionsTest()
+        public void numIntersectionsTestInside()
         {
             Assert.AreEqual(1, GeometryHelper.countIntersections(triangle, new GPSPoint(0.1, 0.2)));
         }
-        // TODO throw error when two or more points are coincident
+
+        [Test]
+        public void numIntersectionsTestOutsideCross()
+        {
+            Assert.AreEqual(2, GeometryHelper.countIntersections(triangle, new GPSPoint(0.5, -0.2)));
+        }
+
+        [Test]
+        public void outsideNotchTest()
+        {
+            Assert.False(GeometryHelper.inside(notch, new GPSPoint(0, 0.1)));
+        }
+
+        [Test]
+        public void insideNotchTest()
+        {
+            Assert.True(GeometryHelper.inside(notch, new GPSPoint(0.5, 1)));
+        }
+
     }
 }
