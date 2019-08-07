@@ -66,13 +66,13 @@ namespace Tests
         [Test]
         public void outsideTriangleTest()
         {
-            Assert.False(GeometryHelper.inside(triangle, new GPSPoint(100, 100)));
+            Assert.False(triangle.encompasses(new GPSPoint(100, 100)));
         }
 
         [Test]
         public void insideTriangleTest()
         {
-            Assert.True(GeometryHelper.inside(triangle, new GPSPoint(0.1, 0.1)));
+            Assert.True(triangle.encompasses(new GPSPoint(0.1, 0.1)));
         }
 
         [Test]
@@ -96,25 +96,25 @@ namespace Tests
         [Test]
         public void numIntersectionsTestInside()
         {
-            Assert.AreEqual(1, GeometryHelper.countIntersections(triangle, new GPSPoint(0.1, 0.2)));
+            Assert.AreEqual(1, triangle.countIntersections(new GPSPoint(0.1, 0.2)));
         }
 
         [Test]
         public void numIntersectionsTestOutsideCross()
         {
-            Assert.AreEqual(2, GeometryHelper.countIntersections(triangle, new GPSPoint(0.5, -0.2)));
+            Assert.AreEqual(2, triangle.countIntersections(new GPSPoint(0.5, -0.2)));
         }
 
         [Test]
         public void outsideNotchTest()
         {
-            Assert.False(GeometryHelper.inside(notch, new GPSPoint(0, 0.1)));
+            Assert.False(notch.encompasses(new GPSPoint(0, 0.1)));
         }
 
         [Test]
         public void insideNotchTest()
         {
-            Assert.True(GeometryHelper.inside(notch, new GPSPoint(0.5, 1)));
+            Assert.True(notch.encompasses(new GPSPoint(0.5, 1)));
         }
 
     }

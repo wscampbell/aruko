@@ -21,6 +21,7 @@ public class GeometryHelper
         return o1 != o2 && o3 != o4;
     }
 
+    /*
     public static bool inside(GPSPolygon polygon, GPSPoint point)
     {
         return countIntersections(polygon, point) % 2 == 1;
@@ -51,4 +52,5 @@ public class GeometryHelper
         }
         return intersections;
     }
+    */
 }
