@@ -28,8 +28,8 @@ public class GPSPoint
         }
         else
         {
-            GPSPoint p = (GPSPoint)obj;
-            return (x == p.x) && (y == p.y);
+            GPSPoint point = (GPSPoint)obj;
+            return (x == point.x) && (y == point.y);
         }
     }
 

@@ -5,7 +5,7 @@ namespace Tests
 {
     public class GPSTest
     {
-        GPSPolygon polygon = new GPSPolygon(new List<GPSPoint>());
+        // TODO why did I make these static?
         static GPSPoint west = new GPSPoint(-1, 0);
         static GPSPoint east = new GPSPoint(1, 0);
         static GPSPoint north = new GPSPoint(0, 1);
@@ -23,6 +23,8 @@ namespace Tests
         GPSPolygon notch = new GPSPolygon(new List<GPSPoint>{
             north + east, south + east, 0.8 * north, south + west, north + west
         });
+
+        GPSBubble bubble = new GPSBubble(new GPSPoint(0, 0)); // default radius
 
         // if you want a function to run before, use [SetUp]
 
@@ -117,5 +119,22 @@ namespace Tests
             Assert.True(notch.encompasses(new GPSPoint(0.5, 1)));
         }
 
+        [Test]
+        public void insideBubbleTest()
+        {
+            Assert.True(bubble.encompasses(new GPSPoint(0.00001, 0.00001)));
+        }
+
+        [Test]
+        public void edgeOfBubbleTest()
+        {
+            Assert.False(bubble.encompasses(new GPSPoint(0, 0.0001)));
+        }
+
+        [Test]
+        public void outsideBubbleTest()
+        {
+            Assert.False(bubble.encompasses(new GPSPoint(0, 0.01)));
+        }
     }
 }
