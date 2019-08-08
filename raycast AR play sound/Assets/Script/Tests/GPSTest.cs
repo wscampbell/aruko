@@ -161,22 +161,28 @@ namespace Tests
             Assert.True(square.encompasses(center));
         }
 
+        // Region tests
         [Test]
-        public void onSegmentTest()
+        public void inFarSquareRegionTest()
         {
-            Assert.True(GeometryHelper.onSegment(east, center, west));
         }
 
         [Test]
-        public void offSegmentTest()
+        public void inCenterBubbleRegionTest()
         {
-            Assert.False(GeometryHelper.onSegment(east, north, west));
         }
 
-        [Test]
-        public void offSegmentFarTest()
+        [SetUp]
+        public void before()
         {
-            Assert.False(GeometryHelper.onSegment(new GPSPoint(0, 10), new GPSPoint(-1, 9), new GPSPoint(999999, 999999)));
+            Regions.add(farSquare);
+            Regions.add(bubble);
+        }
+
+        [TearDown]
+        public void after()
+        {
+            Regions.clear();
         }
     }
 }
