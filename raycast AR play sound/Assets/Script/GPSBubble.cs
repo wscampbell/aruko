@@ -5,11 +5,13 @@ public class GPSBubble : IRegion
     GPSPoint center;
     // in degrees. Default = 0.0001, which is about 10 meters in Japan
     private double radius;
+    public string name { get; set; }
 
-    public GPSBubble(GPSPoint center, double radius = 0.0001)
+    public GPSBubble(GPSPoint center, double radius = 0.0001, string name = "unnamed bubble")
     {
         this.center = center;
         this.radius = radius;
+        this.name = name;
     }
 
     public bool encompasses(GPSPoint point)

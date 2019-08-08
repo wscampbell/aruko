@@ -21,36 +21,19 @@ public class GeometryHelper
         return o1 != o2 && o3 != o4;
     }
 
-    /*
-    public static bool inside(GPSPolygon polygon, GPSPoint point)
+    private static double min(double num1, double num2)
     {
-        return countIntersections(polygon, point) % 2 == 1;
+        return num1 < num2 ? num1 : num2;
     }
 
-    public static int countIntersections(GPSPolygon polygon, GPSPoint point)
+    private static double max(double num1, double num2)
     {
-        int intersections = 0;
-        // TODO make these large numbers constants, or just outside 
-        GPSPoint p1 = new GPSPoint(999999, 999999);
-        GPSPoint q1 = point;
-        for (int i = 0; i < polygon.points.Count; i++)
-        {
-            GPSPoint p2 = polygon.points[i];
-            GPSPoint q2;
-            if (i == polygon.points.Count - 1)
-            {
-                q2 = polygon.points[0]; // wrap around at the end
-            }
-            else
-            {
-                q2 = polygon.points[i + 1];
-            }
-            if (intersect(p1, q1, p2, q2))
-            {
-                intersections++;
-            }
-        }
-        return intersections;
+        return num1 < num2 ? num2 : num1;
     }
-    */
+
+    // checks if q is on line segment pr
+    public static bool onSegment(GPSPoint p, GPSPoint q, GPSPoint r)
+    {
+        return q.x <= max(p.x, r.x) && q.x >= min(p.x, r.x) && q.y <= max(p.y, r.y) && q.y >= min(p.y, r.y);
+    }
 }

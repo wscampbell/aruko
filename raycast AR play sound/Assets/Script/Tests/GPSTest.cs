@@ -5,12 +5,13 @@ namespace Tests
 {
     public class GPSTest
     {
-        // TODO why did I make these static?
         static GPSPoint west = new GPSPoint(-1, 0);
         static GPSPoint east = new GPSPoint(1, 0);
         static GPSPoint north = new GPSPoint(0, 1);
         static GPSPoint south = new GPSPoint(0, -1);
         static GPSPoint center = new GPSPoint(0, 0);
+
+        static GPSPoint farNorth = 10 * north;
 
         GPSPolygon triangle = new GPSPolygon(new List<GPSPoint>{
             center, east, north
@@ -18,6 +19,11 @@ namespace Tests
 
         GPSPolygon square = new GPSPolygon(new List<GPSPoint>{
             north + east, south + east, south + west, north + west
+        });
+
+        GPSPolygon farSquare = new GPSPolygon(new List<GPSPoint>{
+            farNorth + north + east, farNorth + south + east,
+            farNorth + south + west, farNorth + north + west
         });
 
         GPSPolygon notch = new GPSPolygon(new List<GPSPoint>{
@@ -135,6 +141,42 @@ namespace Tests
         public void outsideBubbleTest()
         {
             Assert.False(bubble.encompasses(new GPSPoint(0, 0.01)));
+        }
+
+        [Test]
+        public void insideFarSquareTest()
+        {
+            Assert.True(farSquare.encompasses(new GPSPoint(0, 10)));
+        }
+
+        [Test]
+        public void numIntersectionsFarSquareTest()
+        {
+            Assert.AreEqual(1, farSquare.countIntersections(new GPSPoint(0, 10)));
+        }
+
+        [Test]
+        public void inSquareExactCenterTest()
+        {
+            Assert.True(square.encompasses(center));
+        }
+
+        [Test]
+        public void onSegmentTest()
+        {
+            Assert.True(GeometryHelper.onSegment(east, center, west));
+        }
+
+        [Test]
+        public void offSegmentTest()
+        {
+            Assert.False(GeometryHelper.onSegment(east, north, west));
+        }
+
+        [Test]
+        public void offSegmentFarTest()
+        {
+            Assert.False(GeometryHelper.onSegment(new GPSPoint(0, 10), new GPSPoint(-1, 9), new GPSPoint(999999, 999999)));
         }
     }
 }
