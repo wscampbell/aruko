@@ -178,11 +178,25 @@ namespace Tests
             Assert.AreEqual("unnamed polygon", regions[0].name);
         }
 
+        [Test]
+        public void inJapanTest()
+        {
+            List<IRegion> regions = Regions.enclosingRegions(new GPSPoint(34.97964, 135.9644));
+            Assert.AreEqual(1, regions.Count);
+            Assert.AreEqual("Japan", regions[0].name);
+        }
+
         [SetUp]
         public void before()
         {
             Regions.add(farSquare);
             Regions.add(bubble);
+            Regions.add(new GPSPolygon(new List<GPSPoint>{
+                new GPSPoint(33.799925, 127.361071),
+                new GPSPoint(46.678526, 139.980040),
+                new GPSPoint(42.821432, 151.449732),
+                new GPSPoint(27.702284, 131.320996)
+            }, "Japan"));
         }
 
         [TearDown]
