@@ -163,13 +163,19 @@ namespace Tests
 
         // Region tests
         [Test]
-        public void inFarSquareRegionTest()
+        public void inBubbleRegionTest()
         {
+            List<IRegion> regions = Regions.enclosingRegions(center);
+            Assert.AreEqual(1, regions.Count);
+            Assert.AreEqual("unnamed bubble", regions[0].name);
         }
 
         [Test]
-        public void inCenterBubbleRegionTest()
+        public void inSquareRegionTest()
         {
+            List<IRegion> regions = Regions.enclosingRegions(new GPSPoint(0, 10));
+            Assert.AreEqual(1, regions.Count);
+            Assert.AreEqual("unnamed polygon", regions[0].name);
         }
 
         [SetUp]

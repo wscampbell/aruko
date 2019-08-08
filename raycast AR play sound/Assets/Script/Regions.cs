@@ -1,18 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
 
-public class Regions : MonoBehaviour
+public class Regions
 {
-    // Start is called before the first frame update
-    void Start()
+    private static List<IRegion> regions = new List<IRegion>();
+
+    public static void add(IRegion region)
     {
-        
+        regions.Add(region);
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void clear()
     {
-        
+        regions.Clear();
+    }
+
+    public static int length()
+    {
+        return regions.Count;
+    }
+
+    public static List<IRegion> enclosingRegions(GPSPoint point)
+    {
+        return regions.Where(region => region.encompasses(point)).ToList();
     }
 }
