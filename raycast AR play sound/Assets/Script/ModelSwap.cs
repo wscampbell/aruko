@@ -5,7 +5,7 @@ using System.Collections;
 public class ModelSwap : MonoBehaviour 
 {
     public TrackableBehaviour theTrackable;
-    private bool mSwapCube = false;
+    private bool mSwapModel = false;
     private bool mSwapCapsule = false;
     private bool CapsuleActive = true;
 
@@ -21,10 +21,10 @@ public class ModelSwap : MonoBehaviour
     // Update is called once per frame
     void Update () 
     {
-        if (mSwapCube && theTrackable != null) 
+        if (mSwapModel && theTrackable != null) 
         {
-            SwapCube();
-            mSwapCube = false;
+            SwapModel();
+            mSwapModel = false;
         }
         else if (mSwapCapsule && theTrackable != null)
         {
@@ -35,16 +35,19 @@ public class ModelSwap : MonoBehaviour
 
     void OnGUI() 
     {
+        GUIStyle fontSize = new GUIStyle(GUI.skin.GetStyle("button"));
+        fontSize.fontSize = 48;
+
         if (CapsuleActive)
         {
-            if (GUI.Button (new Rect(50,50,240,80), "Swap Cube")) 
+            if (GUI.Button (new Rect(50,50,480,160), "Swap Model", fontSize)) 
             {
-                mSwapCube = true;
+                mSwapModel = true;
             }
         }
         else
         {
-            if (GUI.Button (new Rect(50,50,240,80), "Swap Capsule"))
+            if (GUI.Button (new Rect(50,50,480,160), "Swap Capsule", fontSize))
             {
                 mSwapCapsule = true;
             }
@@ -52,7 +55,7 @@ public class ModelSwap : MonoBehaviour
         
     }
 
-    private void SwapCube() 
+    private void SwapModel() 
     {
         GameObject trackableGameObject = theTrackable.gameObject;
 
@@ -64,19 +67,19 @@ public class ModelSwap : MonoBehaviour
         }
 
         // Create a simple cube object
-        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        GameObject model = Instantiate(Resources.Load("CyberSoldier", typeof(GameObject))) as GameObject;
 
         // Re-parent the cube as child of the trackable gameObject
-        cube.transform.parent = theTrackable.transform;
+        model.transform.parent = theTrackable.transform;
 
         // Adjust the position and scale
         // so that it fits nicely on the target
-        cube.transform.localPosition = new Vector3(0,0.2f,0);
-        cube.transform.localRotation = Quaternion.identity;
-        cube.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        model.transform.localPosition = new Vector3(0,0.2f,0);
+        model.transform.localRotation = Quaternion.identity;
+        model.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
         // Make sure it is active
-        cube.active = true;
+        model.active = true;
         CapsuleActive = false;
     }
 
