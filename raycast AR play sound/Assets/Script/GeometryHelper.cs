@@ -32,6 +32,7 @@ public class GeometryHelper
     }
 
     // checks if q is on line segment pr
+    // TODO get rid of this
     public static bool onSegment(GPSPoint p, GPSPoint q, GPSPoint r)
     {
         return q.x <= max(p.x, r.x) && q.x >= min(p.x, r.x) && q.y <= max(p.y, r.y) && q.y >= min(p.y, r.y);
