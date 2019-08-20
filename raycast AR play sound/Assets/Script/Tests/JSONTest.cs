@@ -8,16 +8,6 @@ namespace Tests
 {
     public class JSONTest
     {
-        /*
-        static string deadSimpleRegionJSON = @"{
-            ""name"":""testname"",
-            ""points"":[],
-            ""audio"":[],
-            ""images""[]
-        }";
-        */
-        static string deadSimpleRegionJSON = "{\"name\":\"testname\",\"points\":[[123.4, 567.8]]}";
-
         static string editourBeautifulRegionJSON = @"{  
             ""name"":""Beautiful Region"",
             ""points"":[  
@@ -85,15 +75,6 @@ namespace Tests
             Assert.AreEqual(3, editourRegion.points.Count);
             Assert.AreEqual(1, editourRegion.audio.Count);
             Assert.AreEqual(3, editourRegion.images.Count);
-        }
-
-        [Test]
-        public void deadSimpleDeserializeTest()
-        {
-            Debug.Log(deadSimpleRegionJSON);
-            EditourRegion editourRegion = JSONHelper.JSONToEditourRegion(deadSimpleRegionJSON);
-            Assert.AreEqual("testname", editourRegion.name);
-            //Assert.AreEqual(0, editourRegion.points.Count);
         }
 
         [Test]
