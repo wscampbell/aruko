@@ -9,10 +9,4 @@ public class JSONHelper
         EditourRegion editourRegion = (EditourRegion)JsonUtility.FromJson(json, typeof(EditourRegion));
         return editourRegion;
     }
-
-    public static TestSerializable testSerializable(string json)
-    {
-        TestSerializable testSerializable = (TestSerializable)JsonUtility.FromJson(json, typeof(TestSerializable));
-        return testSerializable;
-    }
 }

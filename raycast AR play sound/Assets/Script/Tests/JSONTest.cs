@@ -97,14 +97,6 @@ namespace Tests
         }
 
         [Test]
-        public void deserializeTestSerializableTest()
-        {
-            TestSerializable testSerializable = JSONHelper.testSerializable("{\"name\":\"test\",\"num\":1234.5}");
-            Assert.AreEqual("test", testSerializable.name);
-            Assert.AreEqual(1234.5, testSerializable.num);
-        }
-
-        [Test]
         public void literallyJustPrintOutFull()
         {
             Debug.Log(editourFullJSON);
