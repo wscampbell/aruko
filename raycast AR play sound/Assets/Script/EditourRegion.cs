@@ -7,7 +7,7 @@ using System;
 public class EditourRegion
 {
     public string name;
-    public List<List<int>> points;
-    public List<List<string>> audio;
-    public List<List<string>> images;
+    public List<EditourCoordinate> points;
+    public List<string> audio;
+    public List<string> images;
 }
