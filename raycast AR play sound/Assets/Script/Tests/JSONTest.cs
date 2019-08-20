@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace Tests
 {
     public class JSONTest
     {
+        // example region json
         static string editourBeautifulRegionJSON = @"{  
             ""name"":""Beautiful Region"",
             ""points"":[  
@@ -27,13 +25,14 @@ namespace Tests
             ""audio"":[  
                 ""beautiful-tour.mp3""
             ],
-            ""images"":[  
+            ""images"":[
                 ""mountain.jpg"",
                 ""hill.jpeg"",
                 ""stream.png""
             ]
         }";
 
+        // second example region json
         static string editourGorgeousRegionJSON = @"{  
             ""name"":""Gorgeous Region"",
             ""points"":[  
@@ -59,12 +58,8 @@ namespace Tests
             ]
         }";
 
+        // full tour json
         static string editourTourJSON = "{\"regions\":[" + editourBeautifulRegionJSON + "," + editourGorgeousRegionJSON + "]}";
-
-        [Test]
-        public void JSONTestSimplePasses()
-        {
-        }
 
         [Test]
         public void deserializeEditourRegionTest()
@@ -82,12 +77,7 @@ namespace Tests
             EditourTour editourTour = JSONHelper.JSONToEditourTour(editourTourJSON);
             Assert.AreEqual(2, editourTour.regions.Count);
             Assert.AreEqual("Beautiful Region", editourTour.regions[0].name);
-        }
-
-        [Test]
-        public void literallyJustPrintOutFull()
-        {
-            Debug.Log(editourTourJSON);
+            Assert.AreEqual("Gorgeous Region", editourTour.regions[1].name);
         }
     }
 }
