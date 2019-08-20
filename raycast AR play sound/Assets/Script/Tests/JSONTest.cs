@@ -59,7 +59,7 @@ namespace Tests
             ]
         }";
 
-        static string editourFullJSON = "{\"regions\":[" + editourBeautifulRegionJSON + "," + editourGorgeousRegionJSON + "]}";
+        static string editourTourJSON = "{\"regions\":[" + editourBeautifulRegionJSON + "," + editourGorgeousRegionJSON + "]}";
 
         [Test]
         public void JSONTestSimplePasses()
@@ -69,7 +69,6 @@ namespace Tests
         [Test]
         public void deserializeEditourRegionTest()
         {
-            Debug.Log(editourBeautifulRegionJSON);
             EditourRegion editourRegion = JSONHelper.JSONToEditourRegion(editourBeautifulRegionJSON);
             Assert.AreEqual("Beautiful Region", editourRegion.name);
             Assert.AreEqual(3, editourRegion.points.Count);
@@ -78,9 +77,17 @@ namespace Tests
         }
 
         [Test]
+        public void deserializeEditourTourTest()
+        {
+            EditourTour editourTour = JSONHelper.JSONToEditourTour(editourTourJSON);
+            Assert.AreEqual(2, editourTour.regions.Count);
+            Assert.AreEqual("Beautiful Region", editourTour.regions[0].name);
+        }
+
+        [Test]
         public void literallyJustPrintOutFull()
         {
-            Debug.Log(editourFullJSON);
+            Debug.Log(editourTourJSON);
         }
     }
 }
