@@ -3,6 +3,6 @@
 [Serializable]
 public class EditourCoordinate
 {
-    public float lat;
-    public float lng;
+    public double lat;
+    public double lng;
 }
