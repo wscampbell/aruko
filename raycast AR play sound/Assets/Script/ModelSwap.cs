@@ -4,10 +4,14 @@ using System.Collections;
 
 public class ModelSwap : MonoBehaviour 
 {
-    public TrackableBehaviour theTrackable;
+    // For testing
+    /*
     private bool mSwapModel = false;
     private bool mSwapCapsule = false;
     private bool CapsuleActive = true;
+    */
+
+    public TrackableBehaviour theTrackable;
 
     // Use this for initialization
     void Start () 
@@ -18,6 +22,39 @@ public class ModelSwap : MonoBehaviour
         }
     }
 
+    public void SwapModel(string filename) 
+    {
+        GameObject trackableGameObject = theTrackable.gameObject;
+
+        //disable any pre-existing augmentation
+        for (int i = 0; i < trackableGameObject.transform.childCount; i++)
+        {
+            Transform child = trackableGameObject.transform.GetChild(i);
+            child.gameObject.active = false;
+            Destroy(child.gameObject);
+        }
+
+        // Create a simple cube object
+        GameObject model = Instantiate(Resources.Load(filename, typeof(GameObject))) as GameObject;
+
+        // Re-parent the cube as child of the trackable gameObject
+        model.transform.parent = theTrackable.transform;
+
+        // Adjust the position and scale
+        // so that it fits nicely on the target
+        model.transform.localPosition = new Vector3(0,0.2f,0);
+        model.transform.localRotation = Quaternion.identity;
+        model.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+        // Make sure it is active
+        model.active = true;
+        
+        // For testing
+        //CapsuleActive = false;
+    }
+
+    // Also for testing
+    /*
     // Update is called once per frame
     void Update () 
     {
@@ -54,35 +91,12 @@ public class ModelSwap : MonoBehaviour
         }
         
     }
+    */
 
-    private void SwapModel() 
-    {
-        GameObject trackableGameObject = theTrackable.gameObject;
+    
 
-        //disable any pre-existing augmentation
-        for (int i = 0; i < trackableGameObject.transform.childCount; i++)
-        {
-            Transform child = trackableGameObject.transform.GetChild(i);
-            child.gameObject.active = false;
-        }
-
-        // Create a simple cube object
-        GameObject model = Instantiate(Resources.Load("CyberSoldier", typeof(GameObject))) as GameObject;
-
-        // Re-parent the cube as child of the trackable gameObject
-        model.transform.parent = theTrackable.transform;
-
-        // Adjust the position and scale
-        // so that it fits nicely on the target
-        model.transform.localPosition = new Vector3(0,0.2f,0);
-        model.transform.localRotation = Quaternion.identity;
-        model.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-
-        // Make sure it is active
-        model.active = true;
-        CapsuleActive = false;
-    }
-
+    // For testing
+    /*
     private void SwapCapsule() 
     {
         GameObject trackableGameObject = theTrackable.gameObject;
@@ -110,4 +124,5 @@ public class ModelSwap : MonoBehaviour
         capsule.active = true;
         CapsuleActive = true;
     }
+    */
 }
