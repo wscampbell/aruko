@@ -17,24 +17,14 @@ public class JSONHelper
 
     public static List<GPSPolygon> editourTourToGPSPolygons(string tourFileName)
     {
-        string path = "Assets/Tours/" + tourFileName + "/metadata.json";
-
-        StreamReader reader = new StreamReader(path);
+        StreamReader reader = new StreamReader("Assets/Tours/" + tourFileName + "/metadata.json");
         string tourJSON = reader.ReadToEnd();
-
-        Debug.Log(tourJSON);
         reader.Close();
 
-        EditourTour editourTour = JSONHelper.JSONToEditourTour(tourJSON);
-
-        // the list to convert
-        List<EditourRegion> eRegions = editourTour.regions;
-
-        return eRegions.Select(eRegion => new GPSPolygon(
+        return JSONHelper.JSONToEditourTour(tourJSON).regions.Select(eRegion => new GPSPolygon(
            editourCoordsToGPSPoints(eRegion.points),
            eRegion.name)
         ).ToList();
-
     }
 
     // visible for testing
