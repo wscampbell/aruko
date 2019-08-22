@@ -34,4 +34,10 @@ public class JSONHelper
         return eCoords.Select(eCoord => new GPSPoint(eCoord.lat, eCoord.lng)).ToList();
     }
 
+    public static void addTourToRegion(string tourFilename)
+    {
+        List<GPSPolygon> gPolygons = JSONHelper.editourTourToGPSPolygons(tourFilename);
+        Regions.addAllPolygons(gPolygons);
+    }
+
 }
