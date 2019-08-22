@@ -61,6 +61,7 @@ namespace Tests
         // full tour json
         static string editourTourJSON = "{\"regions\":[" + editourBeautifulRegionJSON + "," + editourGorgeousRegionJSON + "]}";
 
+        // polygons to test for equality with generated polygons
         static GPSPolygon beautifulPolygon = new GPSPolygon(new List<GPSPoint>{
             new GPSPoint(35.04025698454798, 135.73188900947574),
             new GPSPoint(35.03867580927915, 135.7315242290497),
@@ -99,8 +100,11 @@ namespace Tests
             // deserialize the full tour and test the conversion with that
             EditourTour editourTour = JSONHelper.JSONToEditourTour(editourTourJSON);
             List<GPSPoint> gPoints = JSONHelper.editourCoordsToGPSPoints(editourTour.regions[0].points);
-            // test for length
             Assert.AreEqual(3, gPoints.Count);
+            // construct polygon out of gPoints
+            GPSPolygon eBeautifulPolygon = new GPSPolygon(gPoints, "Beautiful Region");
+            // check if the beautiful region polygon is correct
+            Assert.AreEqual(beautifulPolygon.ToString(), eBeautifulPolygon.ToString());
         }
 
         [Test]
@@ -108,7 +112,7 @@ namespace Tests
         {
             List<GPSPolygon> gPolygons = JSONHelper.editourTourToGPSPolygons("ritsu-tour");
             Assert.AreEqual(2, gPolygons.Count);
-            // check if the Creation Core polygon is correct
+            // check if the street polygon is correct
             Assert.AreEqual(streetPolygon.ToString(), gPolygons[1].ToString());
         }
     }
