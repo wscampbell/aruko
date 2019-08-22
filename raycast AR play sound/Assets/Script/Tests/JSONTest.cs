@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using UnityEngine;
+using System.Collections.Generic;
 
 namespace Tests
 {
@@ -78,6 +78,24 @@ namespace Tests
             Assert.AreEqual(2, editourTour.regions.Count);
             Assert.AreEqual("Beautiful Region", editourTour.regions[0].name);
             Assert.AreEqual("Gorgeous Region", editourTour.regions[1].name);
+        }
+
+        [Test]
+        public void eCoordToGPSPointTest()
+        {
+            // deserialize the full tour and test the conversion with that
+            EditourTour editourTour = JSONHelper.JSONToEditourTour(editourTourJSON);
+            List<GPSPoint> gPoints = JSONHelper.editourCoordsToGPSPoints(editourTour.regions[0].points);
+            // TODO actually check the contents of this list rather than just length
+            Assert.AreEqual(3, gPoints.Count);
+        }
+
+        [Test]
+        public void editourTourToGPSPolygonsTest()
+        {
+            EditourTour editourTour = JSONHelper.JSONToEditourTour(editourTourJSON);
+            List<GPSPolygon> gPolygons = JSONHelper.editourTourToGPSPolygons("ritsu-tour");
+            Assert.AreEqual(2, gPolygons.Count);
         }
     }
 }

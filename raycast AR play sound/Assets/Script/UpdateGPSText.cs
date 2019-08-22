@@ -14,6 +14,10 @@ public class UpdateGPSText : MonoBehaviour
 
     private void Start()
     {
+        // load the regions from JSON
+
+        // this commented out code added the regions to test
+        /*
         Regions.add(new GPSBubble(new GPSPoint(0, 0)));
         Regions.add(new GPSPolygon(new List<GPSPoint>{
             new GPSPoint(33.799925, 127.361071),
@@ -27,6 +31,7 @@ public class UpdateGPSText : MonoBehaviour
             new GPSPoint(34.979794, 135.965053),
             new GPSPoint(34.979754, 135.963669)
         }, "Creation Core"));
+        */
     }
 
     private void Update()
@@ -61,6 +66,7 @@ public class UpdateGPSText : MonoBehaviour
             {
                 stringBuilder.Append(region.name + "\n");
             }
+            // TODO get rid of this code; was only for testing
             stringBuilder.Append("End of region list\n");
             stringBuilder.AppendLine(timesUpdated.ToString());
             stringBuilder.AppendLine(Regions.length().ToString());
