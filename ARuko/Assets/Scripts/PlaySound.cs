@@ -12,7 +12,7 @@ public class PlaySound : MonoBehaviour
         BStop = GameObject.Find("Stop");
         Cube = GameObject.Find("Cube");
         BPlay.SetActive(true);
-        BStop.SetActive(false); 
+        BStop.SetActive(false);
     }
 
     // Update is called once per frame
