@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using UnityEngine;
+using System.Collections.Generic;
 
 namespace Tests
 {
@@ -61,6 +61,20 @@ namespace Tests
         // full tour json
         static string editourTourJSON = "{\"regions\":[" + editourBeautifulRegionJSON + "," + editourGorgeousRegionJSON + "]}";
 
+        // polygons to test for equality with generated polygons
+        static GPSPolygon beautifulPolygon = new GPSPolygon(new List<GPSPoint>{
+            new GPSPoint(35.04025698454798, 135.73188900947574),
+            new GPSPoint(35.03867580927915, 135.7315242290497),
+            new GPSPoint(35.039150165072655, 135.733197927475)
+        }, "Beautiful Region");
+
+        static GPSPolygon streetPolygon = new GPSPolygon(new List<GPSPoint>{
+            new GPSPoint(34.98019037699369, 135.96342802047732),
+            new GPSPoint(34.981693568638946, 135.96348702907565),
+            new GPSPoint(34.981684778124745, 135.96386253833774),
+            new GPSPoint(34.98018598165605, 135.9637928009033)
+        }, "Street");
+
         [Test]
         public void deserializeEditourRegionTest()
         {
@@ -78,6 +92,28 @@ namespace Tests
             Assert.AreEqual(2, editourTour.regions.Count);
             Assert.AreEqual("Beautiful Region", editourTour.regions[0].name);
             Assert.AreEqual("Gorgeous Region", editourTour.regions[1].name);
+        }
+
+        [Test]
+        public void eCoordToGPSPointTest()
+        {
+            // deserialize the full tour and test the conversion with that
+            EditourTour editourTour = JSONHelper.JSONToEditourTour(editourTourJSON);
+            List<GPSPoint> gPoints = JSONHelper.editourCoordsToGPSPoints(editourTour.regions[0].points);
+            Assert.AreEqual(3, gPoints.Count);
+            // construct polygon out of gPoints
+            GPSPolygon eBeautifulPolygon = new GPSPolygon(gPoints, "Beautiful Region");
+            // check if the beautiful region polygon is correct
+            Assert.AreEqual(beautifulPolygon.ToString(), eBeautifulPolygon.ToString());
+        }
+
+        [Test]
+        public void editourTourToGPSPolygonsTest()
+        {
+            List<GPSPolygon> gPolygons = JSONHelper.editourTourToGPSPolygons("ritsu-tour");
+            Assert.AreEqual(2, gPolygons.Count);
+            // check if the street polygon is correct
+            Assert.AreEqual(streetPolygon.ToString(), gPolygons[1].ToString());
         }
     }
 }

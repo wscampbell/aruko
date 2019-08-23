@@ -10,6 +10,15 @@ public class Regions
         regions.Add(region);
     }
 
+    // We are only going to need GPSPolygon objects (bubbles are kind of defunct)
+    public static void addAllPolygons(List<GPSPolygon> multipleRegions)
+    {
+        foreach (IRegion region in multipleRegions)
+        {
+            regions.Add(region);
+        }
+    }
+
     public static void clear()
     {
         regions.Clear();

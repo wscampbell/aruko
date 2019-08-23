@@ -56,6 +56,10 @@ public class GPS : MonoBehaviour
 
     public void UpdatePosition()
     {
+        // uncomment these to fake the coordinates to always be in Creation Core
+        //latitude = (float)34.979536;
+        //longitude = (float)135.964277;
+
         latitude = Input.location.lastData.latitude;
         longitude = Input.location.lastData.longitude;
     }

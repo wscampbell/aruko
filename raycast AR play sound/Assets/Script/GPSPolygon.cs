@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Text;
 
 public class GPSPolygon : IRegion
 {
@@ -81,5 +82,18 @@ public class GPSPolygon : IRegion
 
         }
         return intersections;
+    }
+
+    public override string ToString()
+    {
+        // TODO get rid of this
+        StringBuilder stringBuilder = new StringBuilder(name + "[");
+        foreach (GPSPoint point in points)
+        {
+            stringBuilder.Append(point.ToString() + ",");
+        }
+        stringBuilder.Append("]");
+        Debug.Log(stringBuilder.ToString());
+        return stringBuilder.ToString();
     }
 }

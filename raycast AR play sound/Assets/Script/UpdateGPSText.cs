@@ -14,19 +14,8 @@ public class UpdateGPSText : MonoBehaviour
 
     private void Start()
     {
-        Regions.add(new GPSBubble(new GPSPoint(0, 0)));
-        Regions.add(new GPSPolygon(new List<GPSPoint>{
-            new GPSPoint(33.799925, 127.361071),
-            new GPSPoint(46.678526, 139.980040),
-            new GPSPoint(42.821432, 151.449732),
-            new GPSPoint(27.702284, 131.320996)
-        }, "Japan"));
-        Regions.add(new GPSPolygon(new List<GPSPoint>{
-            new GPSPoint(34.979222, 135.963628),
-            new GPSPoint(34.979187, 135.965130),
-            new GPSPoint(34.979794, 135.965053),
-            new GPSPoint(34.979754, 135.963669)
-        }, "Creation Core"));
+        // TODO find a better place for this
+        JSONHelper.addTourToRegion("ritsu-tour");
     }
 
     private void Update()
@@ -61,6 +50,7 @@ public class UpdateGPSText : MonoBehaviour
             {
                 stringBuilder.Append(region.name + "\n");
             }
+            // TODO get rid of this code; was only for testing
             stringBuilder.Append("End of region list\n");
             stringBuilder.AppendLine(timesUpdated.ToString());
             stringBuilder.AppendLine(Regions.length().ToString());
