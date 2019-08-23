@@ -1,25 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlaneMaker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public static GameObject makePicPlane(string filename)
     {
         string pathName = "Tour/" + filename;
+        Texture2D imageTexture = Resources.Load<Texture2D>(pathName);
+
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        // TODO change this material to something not null
-        plane.GetComponent<Renderer>().material.mainTexture = pathName;
+        plane.GetComponent<Renderer>().material.mainTexture = imageTexture;
 
         return plane;
     }
