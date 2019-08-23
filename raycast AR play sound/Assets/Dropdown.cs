@@ -18,7 +18,7 @@ public class Dropdown : MonoBehaviour
 
     public void ToggleMenu()
     {
-        this.GetComponentInChildren<Text>().text = isOpen ? ">" : "<";
+        this.GetComponentInChildren<Text>().text = isOpen ? "Targets v" : "Targets ^";
         isOpen = isOpen ? false : true;
     }
 }
