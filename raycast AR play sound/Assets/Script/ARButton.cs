@@ -5,9 +5,27 @@ using Vuforia;
 
 public class ARButton : MonoBehaviour
 {
-    private bool AREnabled = true;
+    private bool AREnabled = false;
     public GameObject GroundPlane;
+    public PlaneFinderBehaviour PlaneFinder;
 
+    public void ToggleAR()
+    {
+        if (AREnabled)
+        {
+            GroundPlane.SetActive(false);
+            AREnabled = false;
+        }
+        else
+        {
+            GroundPlane.SetActive(true);
+            AREnabled = true;
+            PlaneFinder.PerformHitTest(new Vector2(Screen.width / 2,Screen.height / 2));
+        }
+    }
+
+    // For testing
+    /*
     void OnGUI() 
     {
         GUIStyle fontSize = new GUIStyle(GUI.skin.GetStyle("button"));
@@ -31,4 +49,5 @@ public class ARButton : MonoBehaviour
         }
         
     }
+    */
 }
