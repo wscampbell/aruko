@@ -11,9 +11,6 @@ public class PlaneMaker : MonoBehaviour
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
         plane.GetComponent<Renderer>().material.mainTexture = imageTexture;
 
-        plane.transform.rotation = Quaternion.Euler(90, 0, 0);
-
-
         return plane;
     }
 }

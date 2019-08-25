@@ -23,31 +23,4 @@ public class ARButton : MonoBehaviour
             PlaneFinder.PerformHitTest(new Vector2(Screen.width / 2,Screen.height / 2));
         }
     }
-
-    // For testing
-    /*
-    void OnGUI() 
-    {
-        GUIStyle fontSize = new GUIStyle(GUI.skin.GetStyle("button"));
-        fontSize.fontSize = 48;
-
-        if (AREnabled)
-        {
-            if (GUI.Button (new Rect(700,50,480,160), "Disable AR", fontSize)) 
-            {
-                GroundPlane.SetActive(false);
-                AREnabled = false;
-            }
-        }
-        else
-        {
-            if (GUI.Button (new Rect(700,50,480,160), "Enable AR", fontSize))
-            {
-                GroundPlane.SetActive(true);
-                AREnabled = true;
-            }
-        }
-        
-    }
-    */
 }

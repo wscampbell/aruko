@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class ButtonActions : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public void SwapToPic() {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
