@@ -37,7 +37,7 @@ public class ModelSwap : MonoBehaviour
         model.transform.localRotation = Quaternion.identity;
         //model.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         model.transform.localScale = new Vector3(0.03f, 0.03f, 0.03f);
-        model.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        model.transform.localRotation = Quaternion.Euler(90, 180, 0);
 
         // Make sure it is active
         model.SetActive(true);
