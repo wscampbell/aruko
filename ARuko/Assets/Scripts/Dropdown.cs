@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Dropdown : MonoBehaviour
 {
     public RectTransform container; 
+    public string menuname;
     public bool isOpen;
 
     // Update is called once per frame
@@ -18,7 +19,7 @@ public class Dropdown : MonoBehaviour
 
     public void ToggleMenu()
     {
-        this.GetComponentInChildren<Text>().text = isOpen ? "Targets v" : "Targets ^";
+        this.GetComponentInChildren<Text>().text = isOpen ? "►" + menuname : "▼" + menuname;
         isOpen = isOpen ? false : true;
     }
 }
