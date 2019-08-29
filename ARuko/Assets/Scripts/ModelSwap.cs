@@ -32,11 +32,10 @@ public class ModelSwap : MonoBehaviour
 
         // Adjust the position and scale
         // so that it fits nicely on the target
-        //model.transform.localPosition = new Vector3(0, 0.2f, 0);
         model.transform.localPosition = new Vector3(0, 0, 0);
         model.transform.localRotation = Quaternion.identity;
-        //model.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         model.transform.localScale = new Vector3(0.03f, 0.03f, 0.03f);
+        //model.transform.LookAt(this.transform);                       Tried this to get image planes to face user; maybe come back to later
         model.transform.localRotation = Quaternion.Euler(90, 180, 0);
 
         // Make sure it is active
