@@ -17,7 +17,8 @@ public class JSONHelper
 
     public static List<GPSPolygon> editourTourToGPSPolygons(string tourFileName)
     {
-        StreamReader reader = new StreamReader("Assets/Tours/" + tourFileName + "/metadata.json");
+        // TODO use JSONFromFilename here
+        StreamReader reader = new StreamReader("Assets/Tours/Resources/" + tourFileName + "/metadata.json");
         string tourJSON = reader.ReadToEnd();
         reader.Close();
 
@@ -25,6 +26,14 @@ public class JSONHelper
            editourCoordsToGPSPoints(eRegion.points),
            eRegion.name)
         ).ToList();
+    }
+
+    public static string JSONFromFilename(string filename)
+    {
+        StreamReader reader = new StreamReader("Assets/Tours/Resources/" + filename + "/metadata.json");
+        string tourJSON = reader.ReadToEnd();
+        reader.Close();
+        return tourJSON;
     }
 
     // visible for testing

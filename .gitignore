@@ -38,4 +38,5 @@ sysinfo.txt
 # Other Stuff
 .DS_Store
 ARuko/iOS
+.vscode
 
