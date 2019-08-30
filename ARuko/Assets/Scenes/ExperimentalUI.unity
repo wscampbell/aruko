@@ -2239,6 +2239,7 @@ GameObject:
   - component: {fileID: 1205285420}
   - component: {fileID: 1205285419}
   - component: {fileID: 1205285418}
+  - component: {fileID: 1205285425}
   - component: {fileID: 1205285423}
   - component: {fileID: 1205285424}
   m_Layer: 0
@@ -2366,6 +2367,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GroundPlane: {fileID: 646809355}
   PlaneFinder: {fileID: 760422879}
+--- !u!114 &1205285425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205285417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d8845357f60747d8a7f54964c030b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  regionName: {fileID: 76053323}
 --- !u!1 &1256936666
 GameObject:
   m_ObjectHideFlags: 0

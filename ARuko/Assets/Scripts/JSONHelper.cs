@@ -24,6 +24,7 @@ public class JSONHelper
 
         return JSONHelper.JSONToEditourTour(tourJSON).regions.Select(eRegion => new GPSPolygon(
            editourCoordsToGPSPoints(eRegion.points),
+           eRegion.images,
            eRegion.name)
         ).ToList();
     }

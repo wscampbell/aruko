@@ -6,12 +6,21 @@ public class GPSPolygon : IRegion
 {
     public List<GPSPoint> points { get; } = new List<GPSPoint>();
 
+    public List<string> imageNames { get; } = new List<string>();
+
     public string name { get; set; }
 
     public GPSPolygon(List<GPSPoint> points, string name = "unnamed polygon")
     {
         this.points = points;
         this.name = name;
+    }
+
+    public GPSPolygon(List<GPSPoint> points, List<string> imageNames, string name)
+    {
+        this.points = points;
+        this.name = name;
+        this.imageNames = imageNames;
     }
 
     public void clear()
