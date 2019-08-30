@@ -13,8 +13,6 @@ public class GenerateUI : MonoBehaviour
 
     public static Dictionary<string, GameObject> buttonMap = new Dictionary<string, GameObject>();
 
-    GPSPolygon polygon = null;
-
     // Start is called before the first frame update
     void Start()
     {

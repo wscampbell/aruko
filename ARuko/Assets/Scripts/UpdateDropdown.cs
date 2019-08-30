@@ -12,7 +12,7 @@ public class UpdateDropdown : MonoBehaviour
     public AudioSource audioSource;
     public GameObject canvas;
 
-    GPSPolygon previousRegion = null;
+    IRegion previousRegion = null;
 
     private void Start()
     {
@@ -62,10 +62,10 @@ public class UpdateDropdown : MonoBehaviour
                 }
 
                 // play if the region has changed
-                if (((GPSPolygon)regions[0]) != previousRegion)
+                if (regions[0] != previousRegion)
                 {
                     canvas.GetComponent<AudioButton>().PlayButton();
-                    previousRegion = (GPSPolygon)regions[0];
+                    previousRegion = regions[0];
                 }
             }
             else

@@ -58,7 +58,7 @@ public class GPS : MonoBehaviour
 
     public void UpdatePosition()
     {
-        // uncomment these to fake the coordinates to always be in Creation Core
+        // uncomment these to fake the coordinates to walk up from the Creation Core
         /*
         latitude = (float)34.979536 + 0.0001f * timesUpdated;
         longitude = (float)135.964277;
