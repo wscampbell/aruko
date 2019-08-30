@@ -10,6 +10,9 @@ public class UpdateDropdown : MonoBehaviour
     private const int maxStep = 60;
 
     public AudioSource audioSource;
+    public GameObject canvas;
+
+    GPSPolygon previousRegion = null;
 
     private void Start()
     {
@@ -56,6 +59,13 @@ public class UpdateDropdown : MonoBehaviour
                     {
                         item.Value.SetActive(false);
                     }
+                }
+
+                // play if the region has changed
+                if (((GPSPolygon)regions[0]) != previousRegion)
+                {
+                    canvas.GetComponent<AudioButton>().PlayButton();
+                    previousRegion = (GPSPolygon)regions[0];
                 }
             }
             else

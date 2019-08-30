@@ -13,6 +13,8 @@ public class GenerateUI : MonoBehaviour
 
     public static Dictionary<string, GameObject> buttonMap = new Dictionary<string, GameObject>();
 
+    GPSPolygon polygon = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,8 @@ public class GenerateUI : MonoBehaviour
             Texture2D texture = Resources.Load<Texture2D>("ritsu-tour/" + (flatFile.Split('.'))[0]);
             textures.Add(texture);
         }
-        //Sprite[] testSprites = Resources.LoadAll<Sprite>("ritsu-tour");
+
+        // generate Sprites
         foreach (Texture2D texture in textures)
         {
             Sprite sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0, 0));

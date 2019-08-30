@@ -11,6 +11,8 @@ public class GPS : MonoBehaviour
     public float longitude { get; private set; }
     public float timesStarted = 0;
 
+    private int timesUpdated = 0;
+
     private void Start()
     {
         instance = this;
@@ -57,10 +59,15 @@ public class GPS : MonoBehaviour
     public void UpdatePosition()
     {
         // uncomment these to fake the coordinates to always be in Creation Core
-        latitude = (float)34.979536;
+        /*
+        latitude = (float)34.979536 + 0.0001f * timesUpdated;
         longitude = (float)135.964277;
+        timesUpdated++;
+        Debug.Log("lat: " + latitude + " lon: " + longitude);
+        Debug.Log("times updated: " + timesUpdated);
+        */
 
-        //latitude = Input.location.lastData.latitude;
-        //longitude = Input.location.lastData.longitude;
+        latitude = Input.location.lastData.latitude;
+        longitude = Input.location.lastData.longitude;
     }
 }

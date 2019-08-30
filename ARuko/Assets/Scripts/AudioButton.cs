@@ -7,19 +7,31 @@ public class AudioButton : MonoBehaviour
     public GameObject Play, Stop, Audio;
     private bool AudioPlaying = false;
 
-    public void SwapButtons(){
-        if (AudioPlaying){
-            AudioPlaying = false;
-            Audio.GetComponent<AudioSource>().Pause();
-            Play.SetActive(true);
-            Stop.SetActive(false);
+    public void SwapButtons()
+    {
+        if (AudioPlaying)
+        {
+            PauseButton();
         }
         else
         {
-            AudioPlaying = true;
-            Audio.GetComponent<AudioSource>().Play();
-            Play.SetActive(false);
-            Stop.SetActive(true);
+            PlayButton();
         }
+    }
+
+    public void PauseButton()
+    {
+        AudioPlaying = false;
+        Audio.GetComponent<AudioSource>().Pause();
+        Play.SetActive(true);
+        Stop.SetActive(false);
+    }
+
+    public void PlayButton()
+    {
+        AudioPlaying = true;
+        Audio.GetComponent<AudioSource>().Play();
+        Play.SetActive(false);
+        Stop.SetActive(true);
     }
 }
