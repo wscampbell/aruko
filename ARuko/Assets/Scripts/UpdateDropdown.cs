@@ -9,6 +9,8 @@ public class UpdateDropdown : MonoBehaviour
     private int stepsSinceUpdate = 0;
     private const int maxStep = 60;
 
+    public AudioSource audioSource;
+
     private void Start()
     {
         JSONHelper.addTourToRegion("ritsu-tour");
@@ -42,6 +44,8 @@ public class UpdateDropdown : MonoBehaviour
                     Debug.Log(image);
                 }
                 regionName.text = regions[0].name;
+                audioSource.clip = ((GPSPolygon)regions[0]).audioClip;
+
                 foreach (KeyValuePair<string, GameObject> item in GenerateUI.buttonMap)
                 {
                     if (names.Contains(item.Key))
