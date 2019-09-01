@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Text;
 
 public class GPS : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class GPS : MonoBehaviour
     public float timesStarted = 0;
 
     private int timesUpdated = 0;
+    public Text debugText;
 
     private void Start()
     {
@@ -20,7 +23,6 @@ public class GPS : MonoBehaviour
         StartCoroutine(StartLocationService());
     }
 
-    // why does this need to return an IEnumerator?
     private IEnumerator StartLocationService()
     {
         if (!Input.location.isEnabledByUser)
@@ -59,15 +61,15 @@ public class GPS : MonoBehaviour
     public void UpdatePosition()
     {
         // uncomment these to fake the coordinates to walk up from the Creation Core
-        /*
-        latitude = (float)34.979536 + 0.0001f * timesUpdated;
-        longitude = (float)135.964277;
-        timesUpdated++;
-        Debug.Log("lat: " + latitude + " lon: " + longitude);
-        Debug.Log("times updated: " + timesUpdated);
-        */
-
+        //latitude = (float)34.979536 + 0.0001f * timesUpdated;
+        //longitude = (float)135.964277;
+        //timesUpdated++;
+        //Debug.Log("lat: " + latitude + " lon: " + longitude);
+        //debugText.text = "lat: " + latitude + " lon: " + longitude;
+        //Debug.Log("times updated: " + timesUpdated);
         latitude = Input.location.lastData.latitude;
         longitude = Input.location.lastData.longitude;
+        debugText.text = "lat: " + latitude + " lon: " + longitude + " len: " + Regions.length();
+
     }
 }

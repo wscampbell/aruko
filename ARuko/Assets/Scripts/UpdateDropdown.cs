@@ -74,6 +74,7 @@ public class UpdateDropdown : MonoBehaviour
                 foreach (KeyValuePair<string, GameObject> item in GenerateUI.buttonMap)
                 {
                     item.Value.SetActive(false);
+                    previousRegion = null;
                 }
             }
         }
