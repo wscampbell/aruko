@@ -52,7 +52,11 @@ public class GenerateUI : MonoBehaviour
             button.GetComponent<Image>().sprite = sprites[i];
             int index = i;
             button.GetComponent<Button>().onClick.AddListener(
-                () => { ARCamera.GetComponent<ModelSwap>().SwapPic(flatFiles[index].Split('.')[0]); }
+                () =>
+                {
+                    ARCamera.GetComponent<ModelSwap>().SwapPic(flatFiles[index].Split('.')[0]);
+                    //ARCamera.GetComponent<ModelSwap>().orientModel();
+                }
             );
             button.transform.parent = menuPanel;
             button.GetComponent<RectTransform>().localScale = new Vector3(1, textures[i].height / textures[i].width, 1);
