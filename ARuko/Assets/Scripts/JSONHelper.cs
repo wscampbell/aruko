@@ -21,8 +21,8 @@ public class JSONHelper
         //StreamReader reader = new StreamReader("Assets/Tours/Resources/" + tourFileName + "/metadata.json");
         //string tourJSON = reader.ReadToEnd();
         //reader.Close();
-        TextAsset textAsset = Resources.Load<TextAsset>(tourFileName + "/metadata");
-        string tourJSON = textAsset.text;
+        //TextAsset textAsset = Resources.Load<TextAsset>(tourFileName + "/metadata");
+        string tourJSON = JSONFromFilename(tourFileName);
 
         return JSONHelper.JSONToEditourTour(tourJSON).regions.Select(eRegion =>
         {
@@ -36,10 +36,13 @@ public class JSONHelper
 
     public static string JSONFromFilename(string filename)
     {
-        StreamReader reader = new StreamReader("Assets/Tours/Resources/" + filename + "/metadata.json");
-        string tourJSON = reader.ReadToEnd();
-        reader.Close();
-        return tourJSON;
+        //StreamReader reader = new StreamReader("Assets/Tours/Resources/" + filename + "/metadata.json");
+        //string tourJSON = reader.ReadToEnd();
+        //reader.Close();
+        //return tourJSON;
+        //TextAsset textAsset = Resources.Load<TextAsset>(filename + "/metadata");
+        //string tourJSON = textAsset.text;
+        return Resources.Load<TextAsset>(filename + "/metadata").text;
     }
 
     // visible for testing
