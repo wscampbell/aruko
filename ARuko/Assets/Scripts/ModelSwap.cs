@@ -32,15 +32,15 @@ public class ModelSwap : MonoBehaviour
 
         // Adjust the position and scale
         // so that it fits nicely on the target
-        model.transform.localPosition = new Vector3(0, 0.5f, 0);
-        model.transform.localRotation = Quaternion.identity;
-        model.transform.localScale = new Vector3(1f, 1f, 1f);
+        model.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        model.transform.localPosition = new Vector3(0, 0.05f, 0);
+        //model.transform.localRotation = Quaternion.identity;
         //model.transform.LookAt(this.transform);                       Tried this to get image planes to face user; maybe come back to later
         //model.transform.localRotation = Quaternion.Euler(90, 180, 0);
 
         // Make sure it is active
-        //orientModel();
         model.SetActive(true);
+        orientModel();
     }
 
     public void SwapModel(string filename)
@@ -59,7 +59,9 @@ public class ModelSwap : MonoBehaviour
 
     public void orientModel()
     {
+        Debug.Log("orient model called");
         GameObject trackableGameObject = theTrackable.gameObject;
+        Debug.Log("trackable game object: " + trackableGameObject);
         // if assumption that only one child exist ever changes, we gotta change this
         Transform child = trackableGameObject.transform.GetChild(0);
         Camera camera = Camera.main;
