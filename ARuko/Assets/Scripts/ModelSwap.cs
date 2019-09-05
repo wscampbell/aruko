@@ -32,15 +32,15 @@ public class ModelSwap : MonoBehaviour
 
         // Adjust the position and scale
         // so that it fits nicely on the target
-        model.transform.localPosition = new Vector3(0, 0, 0);
-        model.transform.localRotation = Quaternion.identity;
-        model.transform.localScale = new Vector3(0.08f, 0.08f, 0.08f);
+        model.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        model.transform.localPosition = new Vector3(0, 0.05f, 0);
+        //model.transform.localRotation = Quaternion.identity;
         //model.transform.LookAt(this.transform);                       Tried this to get image planes to face user; maybe come back to later
-        model.transform.localRotation = Quaternion.Euler(60, 180, 0);
+        //model.transform.localRotation = Quaternion.Euler(90, 180, 0);
 
         // Make sure it is active
         model.SetActive(true);
-
+        orientModel();
     }
 
     public void SwapModel(string filename)
@@ -55,5 +55,21 @@ public class ModelSwap : MonoBehaviour
         // TODO make this take in a tour as well
         GameObject model = PlaneMaker.makePicPlane("ritsu-tour", filename);
         SwapModelFromModel(model);
+    }
+
+    public void orientModel()
+    {
+        Debug.Log("orient model called");
+        GameObject trackableGameObject = theTrackable.gameObject;
+        Debug.Log("trackable game object: " + trackableGameObject);
+        // if assumption that only one child exist ever changes, we gotta change this
+        Transform child = trackableGameObject.transform.GetChild(0);
+        Camera camera = Camera.main;
+        Debug.Log(camera.transform.position.x);
+        Debug.Log(camera.transform.position.y);
+        Debug.Log(camera.transform.position.z);
+        Vector3 targetPosition = new Vector3(camera.transform.position.x, child.position.y, camera.transform.position.z);
+        child.LookAt(targetPosition);
+        //child.transform.localRotation = Quaternion.Euler(90, 180, 0);
     }
 }
