@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ExperimentalUI.unity
     guid: af2b13f678cbde741bf9aeadd3cd8c89
+  - enabled: 0
+    path: Assets/Scenes/PicPlaneTest.unity
+    guid: 80afe67ae66164483bd045de5fb2a8fc
   m_configObjects: {}

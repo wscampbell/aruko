@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+// TODO get rid of this whole class
 public class UpdateGPSText : MonoBehaviour
 {
     public Text coordinates;
@@ -15,7 +16,7 @@ public class UpdateGPSText : MonoBehaviour
     private void Start()
     {
         // TODO find a better place for this
-        JSONHelper.addTourToRegion("ritsu-tour");
+        //JSONHelper.addTourToRegion("ritsu-tour");
     }
 
     private void Update()

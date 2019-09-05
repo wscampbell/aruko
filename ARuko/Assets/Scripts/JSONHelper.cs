@@ -17,14 +17,32 @@ public class JSONHelper
 
     public static List<GPSPolygon> editourTourToGPSPolygons(string tourFileName)
     {
-        StreamReader reader = new StreamReader("Assets/Tours/" + tourFileName + "/metadata.json");
-        string tourJSON = reader.ReadToEnd();
-        reader.Close();
+        // TODO use JSONFromFilename here
+        //StreamReader reader = new StreamReader("Assets/Tours/Resources/" + tourFileName + "/metadata.json");
+        //string tourJSON = reader.ReadToEnd();
+        //reader.Close();
+        //TextAsset textAsset = Resources.Load<TextAsset>(tourFileName + "/metadata");
+        string tourJSON = JSONFromFilename(tourFileName);
 
-        return JSONHelper.JSONToEditourTour(tourJSON).regions.Select(eRegion => new GPSPolygon(
-           editourCoordsToGPSPoints(eRegion.points),
-           eRegion.name)
-        ).ToList();
+        return JSONHelper.JSONToEditourTour(tourJSON).regions.Select(eRegion =>
+        {
+            // there should only be one audio file so just get the first
+            string audioName = eRegion.audio[0];
+            Debug.Log("audio name: " + audioName);
+            AudioClip audioClip = Resources.Load<AudioClip>("ritsu-tour/" + (audioName.Split('.'))[0]);
+            return new GPSPolygon(editourCoordsToGPSPoints(eRegion.points), eRegion.images, audioClip, eRegion.name);
+        }).ToList();
+    }
+
+    public static string JSONFromFilename(string filename)
+    {
+        //StreamReader reader = new StreamReader("Assets/Tours/Resources/" + filename + "/metadata.json");
+        //string tourJSON = reader.ReadToEnd();
+        //reader.Close();
+        //return tourJSON;
+        //TextAsset textAsset = Resources.Load<TextAsset>(filename + "/metadata");
+        //string tourJSON = textAsset.text;
+        return Resources.Load<TextAsset>(filename + "/metadata").text;
     }
 
     // visible for testing

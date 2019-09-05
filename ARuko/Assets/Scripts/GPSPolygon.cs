@@ -5,13 +5,30 @@ using System.Text;
 public class GPSPolygon : IRegion
 {
     public List<GPSPoint> points { get; } = new List<GPSPoint>();
-
+    public List<string> imageNames { get; } = new List<string>();
     public string name { get; set; }
+    public AudioClip audioClip { get; set; }
 
     public GPSPolygon(List<GPSPoint> points, string name = "unnamed polygon")
     {
         this.points = points;
         this.name = name;
+    }
+
+    // TODO get rid of this constructor
+    public GPSPolygon(List<GPSPoint> points, List<string> imageNames, string name)
+    {
+        this.points = points;
+        this.name = name;
+        this.imageNames = imageNames;
+    }
+
+    public GPSPolygon(List<GPSPoint> points, List<string> imageNames, AudioClip audioClip, string name)
+    {
+        this.points = points;
+        this.name = name;
+        this.audioClip = audioClip;
+        this.imageNames = imageNames;
     }
 
     public void clear()
