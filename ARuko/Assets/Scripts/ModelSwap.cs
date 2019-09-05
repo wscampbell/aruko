@@ -18,6 +18,7 @@ public class ModelSwap : MonoBehaviour
     public void SwapModelFromModel(GameObject model)
     {
         GameObject trackableGameObject = theTrackable.gameObject;
+        Camera user = Camera.main;
 
         //disable any pre-existing augmentation
         for (int i = 0; i < trackableGameObject.transform.childCount; i++)
@@ -29,18 +30,16 @@ public class ModelSwap : MonoBehaviour
 
         // Re-parent the cube as child of the trackable gameObject
         model.transform.parent = theTrackable.transform;
+        Debug.Log(trackableGameObject.transform.GetChild(0).ToString());
 
         // Adjust the position and scale
         // so that it fits nicely on the target
-        model.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         model.transform.localPosition = new Vector3(0, 0.05f, 0);
-        //model.transform.localRotation = Quaternion.identity;
-        //model.transform.LookAt(this.transform);                       Tried this to get image planes to face user; maybe come back to later
-        //model.transform.localRotation = Quaternion.Euler(90, 180, 0);
+        model.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        model.transform.LookAt(new Vector3(user.transform.position.x, user.transform.position.y, user.transform.position.z));
 
         // Make sure it is active
         model.SetActive(true);
-        orientModel();
     }
 
     public void SwapModel(string filename)
