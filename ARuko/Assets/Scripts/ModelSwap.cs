@@ -30,10 +30,8 @@ public class ModelSwap : MonoBehaviour
 
         // Re-parent the cube as child of the trackable gameObject
         model.transform.parent = theTrackable.transform;
-        Debug.Log(trackableGameObject.transform.GetChild(0).ToString());
 
-        // Adjust the position and scale
-        // so that it fits nicely on the target
+        // Adjust the position and scale so that it fits nicely on the target
         model.transform.localPosition = new Vector3(0, 0.05f, 0);
         model.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         model.transform.LookAt(new Vector3(user.transform.position.x, user.transform.position.y, user.transform.position.z));
@@ -51,24 +49,17 @@ public class ModelSwap : MonoBehaviour
 
     public void SwapPic(string filename)
     {
-        // TODO make this take in a tour as well
         GameObject model = PlaneMaker.makePicPlane("ritsu-tour", filename);
         SwapModelFromModel(model);
     }
 
     public void orientModel()
     {
-        Debug.Log("orient model called");
         GameObject trackableGameObject = theTrackable.gameObject;
-        Debug.Log("trackable game object: " + trackableGameObject);
         // if assumption that only one child exist ever changes, we gotta change this
         Transform child = trackableGameObject.transform.GetChild(0);
         Camera camera = Camera.main;
-        Debug.Log(camera.transform.position.x);
-        Debug.Log(camera.transform.position.y);
-        Debug.Log(camera.transform.position.z);
         Vector3 targetPosition = new Vector3(camera.transform.position.x, child.position.y, camera.transform.position.z);
         child.LookAt(targetPosition);
-        //child.transform.localRotation = Quaternion.Euler(90, 180, 0);
     }
 }

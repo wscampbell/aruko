@@ -49,9 +49,7 @@ public class GPS : MonoBehaviour
         }
 
         UpdatePosition();
-
         timesStarted++;
-
         yield break;
     }
 
@@ -64,6 +62,7 @@ public class GPS : MonoBehaviour
         //Debug.Log("lat: " + latitude + " lon: " + longitude);
         //debugText.text = "lat: " + latitude + " lon: " + longitude;
         //Debug.Log("times updated: " + timesUpdated);
+        
         latitude = Input.location.lastData.latitude;
         longitude = Input.location.lastData.longitude;
         debugText.text = "lat: " + latitude + " lon: " + longitude + " len: " + Regions.length();

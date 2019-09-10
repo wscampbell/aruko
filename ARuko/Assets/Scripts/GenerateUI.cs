@@ -17,17 +17,12 @@ public class GenerateUI : MonoBehaviour
     void Start()
     {
         ARCamera = Camera.main;
+
         // retrieves image names from tour file
         EditourTour editourTour = JSONHelper.JSONToEditourTour(JSONHelper.JSONFromFilename("ritsu-tour"));
         foreach (EditourRegion editourRegion in editourTour.regions)
         {
             flatFiles.AddRange(editourRegion.images);
-        }
-
-        // print out all of the filenames in flatfiles
-        foreach (string str in flatFiles)
-        {
-            Debug.Log(str);
         }
 
         // loads all images as Sprites for application to buttons
@@ -55,7 +50,6 @@ public class GenerateUI : MonoBehaviour
                 () =>
                 {
                     ARCamera.GetComponent<ModelSwap>().SwapPic(flatFiles[index].Split('.')[0]);
-                    //ARCamera.GetComponent<ModelSwap>().orientModel();
                 }
             );
             button.transform.parent = menuPanel;
