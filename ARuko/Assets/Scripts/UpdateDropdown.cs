@@ -62,6 +62,7 @@ public class UpdateDropdown : MonoBehaviour
                 }
 
                 // play if the region has changed
+                // TODO also reset audio slider before playing
                 if (regions[0] != previousRegion)
                 {
                     canvas.GetComponent<AudioButton>().PlayButton();

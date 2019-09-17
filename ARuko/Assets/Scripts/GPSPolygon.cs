@@ -15,14 +15,6 @@ public class GPSPolygon : IRegion
         this.name = name;
     }
 
-    // TODO get rid of this constructor
-    public GPSPolygon(List<GPSPoint> points, List<string> imageNames, string name)
-    {
-        this.points = points;
-        this.name = name;
-        this.imageNames = imageNames;
-    }
-
     public GPSPolygon(List<GPSPoint> points, List<string> imageNames, AudioClip audioClip, string name)
     {
         this.points = points;
@@ -50,7 +42,6 @@ public class GPSPolygon : IRegion
     public int countIntersections(GPSPoint point)
     {
         int intersections = 0;
-        // TODO make these large numbers constants, or just outside 
         GPSPoint p1 = new GPSPoint(1000, 1000);
         GPSPoint q1 = point;
 
@@ -87,7 +78,6 @@ public class GPSPolygon : IRegion
                 // deals with raycast passing over exact vertex problem
                 if (GeometryHelper.orientation(q1, p2, p1) == 0)
                 {
-                    Debug.Log("intersection: " + q1.ToString() + p2.ToString() + p1.ToString());
                     int o1 = (GeometryHelper.orientation(p0, p2, q1));
                     int o2 = (GeometryHelper.orientation(q1, p2, q2));
                     if (o1 == o2)
@@ -103,14 +93,12 @@ public class GPSPolygon : IRegion
 
     public override string ToString()
     {
-        // TODO get rid of this
         StringBuilder stringBuilder = new StringBuilder(name + "[");
         foreach (GPSPoint point in points)
         {
             stringBuilder.Append(point.ToString() + ",");
         }
         stringBuilder.Append("]");
-        Debug.Log(stringBuilder.ToString());
         return stringBuilder.ToString();
     }
 }

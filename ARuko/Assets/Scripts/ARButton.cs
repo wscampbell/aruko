@@ -20,6 +20,7 @@ public class ARButton : MonoBehaviour
         {
             GroundPlane.SetActive(true);
             AREnabled = true;
+            // TODO: check if we need this line, it might not be doing anything
             PlaneFinder.PerformHitTest(new Vector2(Screen.width / 2,Screen.height / 2));
         }
     }

@@ -8,8 +8,6 @@ public class PlaneMaker : MonoBehaviour
         string pathName = tourName + "/" + filename;
         Texture2D imageTexture = Resources.Load<Texture2D>(pathName);
 
-        //GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        // TODO change this to an actual plane
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Cube);
         plane.GetComponent<Renderer>().material.mainTexture = imageTexture;
 
