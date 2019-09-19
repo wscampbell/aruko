@@ -12,6 +12,7 @@ public class ModeSwap : MonoBehaviour
     {
         arCam = Camera.main;
         arCam.enabled = false;
+        arCam.GetComponent<VuforiaMonoBehaviour>().enabled = false;
     }
 
     // swaps between modes other than AR mode, takes string of Tag of new mode
@@ -19,6 +20,7 @@ public class ModeSwap : MonoBehaviour
     {
         // disable the AR Camera so it's not searching in the background
         arCam.enabled = false;
+        arCam.GetComponent<VuforiaMonoBehaviour>().enabled = false;
 
         // disable child modes, if it's the desired mode, enable it
         for (int i = 0; i < this.transform.childCount; i++)
@@ -47,5 +49,6 @@ public class ModeSwap : MonoBehaviour
 
         // turn on camera
         arCam.enabled = true;
+        arCam.GetComponent<VuforiaMonoBehaviour>().enabled = true;
     }
 }
