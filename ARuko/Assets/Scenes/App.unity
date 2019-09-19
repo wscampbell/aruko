@@ -559,6 +559,7 @@ MonoBehaviour:
   Play: {fileID: 1015480174}
   Stop: {fileID: 764417729}
   Audio: {fileID: 2092171500}
+  audioSource: {fileID: 0}
 --- !u!114 &267676562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3053,6 +3054,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2092171501}
   slider: {fileID: 2124828359}
+  currTime: {fileID: 0}
+  maxTime: {fileID: 0}
 --- !u!114 &2124828359
 MonoBehaviour:
   m_ObjectHideFlags: 0
