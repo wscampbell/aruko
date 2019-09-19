@@ -8,12 +8,17 @@ public class ModeSwap : MonoBehaviour
     // for toggling AR mode
     private Camera arCam;
 
+    void Start()
+    {
+        arCam = Camera.main;
+        arCam.enabled = false;
+    }
+
     // swaps between modes other than AR mode, takes string of Tag of new mode
     public void SwapMode(string newMode)
     {
         // disable the AR Camera so it's not searching in the background
-        //arCam = Camera.main;
-        //arCam.enabled = false;
+        arCam.enabled = false;
 
         // disable child modes, if it's the desired mode, enable it
         for (int i = 0; i < this.transform.childCount; i++)
@@ -41,7 +46,6 @@ public class ModeSwap : MonoBehaviour
         }
 
         // turn on camera
-        //arCam = Camera.main;
-        //arCam.enabled = true;
+        arCam.enabled = true;
     }
 }
