@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-public class ListItem
+public class Chapter
 {
     public Sprite icon;
     public string number;
     public string itemName;
 
-    public ListItem(Sprite icon, string number, string itemName)
+    public Chapter(Sprite icon, string number, string itemName)
     {
         this.icon = icon;
         this.number = number;
