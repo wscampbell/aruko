@@ -19,7 +19,6 @@ public class AudioSlider : MonoBehaviour
     public void ChangeAudioTime()
     {
        audioSource.time = audioSource.clip.length * slider.value;
-       maxTime.text = TimeToClocktime(audioSource.clip.length);
     }
 
     // Update is called once per frame
@@ -27,6 +26,7 @@ public class AudioSlider : MonoBehaviour
     {
         slider.value = audioSource.time / audioSource.clip.length;
         currTime.text = TimeToClocktime(audioSource.time);
+        maxTime.text = TimeToClocktime(audioSource.clip.length);
     }
 
     // turns audio clip time (float of seconds) to string of clock time (format "00:00")
