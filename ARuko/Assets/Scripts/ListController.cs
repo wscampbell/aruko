@@ -9,21 +9,40 @@ public class ListController : MonoBehaviour
     public GameObject contentPanel;
     public GameObject listItemPrefab;
 
-    ArrayList chapters;
+    //ArrayList chaptersList;
 
     void Start()
     {
-        // TODO populate chapters from metadata
-        chapters = new ArrayList() {
-            new Chapter(chapterImages[0], "1", "INTRO"),
-            new Chapter(chapterImages[1], "2", "ASHIKAGA"),
-            new Chapter(chapterImages[2], "3", "ZEN BUDDHISM"),
-            new Chapter(chapterImages[3], "4", "ETC"),
-            new Chapter(chapterImages[4], "5", "AND SO ON"),
-            new Chapter(chapterImages[5], "6", "BLAH BLAH BLAH"),
-        };
+        populateChapters();
+    }
 
-        foreach (Chapter c in chapters) {
+    public void populateChapters()
+    {
+        List<Chapter> chapters = new List<Chapter>();
+        EditourTour editourTour = JSONHelper.JSONToEditourTour(JSONHelper.JSONFromFilename("ritsu-tour"));
+        List<EditourRegion> editourRegions = editourTour.regions;
+
+        // TODO sort lexicographically
+        int counter = 0;
+        foreach (EditourRegion e in editourRegions)
+        {
+            //Debug.Log(e.name);
+            //Debug.Log("count: " + e.images.Count.ToString());
+            //Debug.Log((e.images[0].Split('.'))[0]);
+            counter++;
+            if (e.images.Count > 0)
+            {
+                //Debug.Log("ritsu-tour/" + (e.images[0].Split('.'))[0]);
+                Texture2D texture = Resources.Load<Texture2D>("ritsu-tour/" + (e.images[0].Split('.'))[0]);
+                Debug.Log(texture);
+                Sprite sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0, 0));
+                chapters.Add(new Chapter(sprite, counter.ToString(), e.name));
+            }
+        }
+        Debug.Log(chapters.Count);
+
+        foreach (Chapter c in chapters)
+        {
             GameObject newChapter = Instantiate(listItemPrefab) as GameObject;
             ListItemController controller = newChapter.GetComponent<ListItemController>() as ListItemController;
             controller.icon.sprite = c.icon;
