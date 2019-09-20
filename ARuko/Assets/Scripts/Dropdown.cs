@@ -22,7 +22,6 @@ public class Dropdown : MonoBehaviour
         // used for old dropdown where text was changed on toggle
         //this.GetComponentInChildren<Text>().text = isOpen ? "►" + menuname : "▼" + menuname;
         isOpen = isOpen ? false : true;
-        Debug.Log("TOGGLED MENU");
     }
 
     public void SetOpen()
