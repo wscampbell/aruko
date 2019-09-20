@@ -8,6 +8,7 @@ TagManager:
   - Stop
   - Map
   - Home
+  - Dropdown
   layers:
   - Default
   - TransparentFX

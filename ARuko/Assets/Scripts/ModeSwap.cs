@@ -26,7 +26,7 @@ public class ModeSwap : MonoBehaviour
         for (int i = 0; i < this.transform.childCount; i++)
         {
             Transform child = this.transform.GetChild(i);
-            if (child.gameObject.tag == newMode)
+            if (child.gameObject.tag == newMode || child.gameObject.tag == "Dropdown")
             {
                 child.gameObject.SetActive(true);
             }
@@ -44,6 +44,10 @@ public class ModeSwap : MonoBehaviour
         for (int i = 0; i < this.transform.childCount; i++)
         {
             Transform child = this.transform.GetChild(i);
+            if (child.gameObject.tag == "Dropdown")
+            {
+                continue;
+            }
             child.gameObject.SetActive(false);
         }
 
