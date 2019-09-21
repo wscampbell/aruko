@@ -10,4 +10,5 @@ public class EditourRegion
     public List<EditourCoordinate> points;
     public List<string> audio;
     public List<string> images;
+    public string transcript;
 }

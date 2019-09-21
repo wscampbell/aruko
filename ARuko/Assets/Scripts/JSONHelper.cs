@@ -27,7 +27,7 @@ public class JSONHelper
             Debug.Log("audio name: " + audioName);
             AudioClip audioClip = Resources.Load<AudioClip>("ritsu-tour/" + (audioName.Split('.'))[0]);
             eRegion.images.Sort();
-            return new GPSPolygon(editourCoordsToGPSPoints(eRegion.points), eRegion.images, audioClip, eRegion.name);
+            return new GPSPolygon(editourCoordsToGPSPoints(eRegion.points), eRegion.images, audioClip, eRegion.name, eRegion.transcript);
         }).ToList();
     }
 

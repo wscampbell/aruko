@@ -8,6 +8,7 @@ public class UpdateDropdown : MonoBehaviour
     [SerializeField] GameObject audioSlider;
     [SerializeField] Text regionName;
     [SerializeField] Image homeImage;
+    [SerializeField] Text transcriptText;
     private int stepsSinceUpdate = 0;
     private const int maxStep = 60;
     private string regionNameText = "";
@@ -90,6 +91,7 @@ public class UpdateDropdown : MonoBehaviour
                     this.GetComponent<ImageGallery>().activeImageCount = activeImageCount;
                     canvas.GetComponentInChildren<Dropdown>().SetOpen();
                     homeImage.sprite = firstImage.GetComponent<Image>().sprite;
+                    transcriptText.text = "\n" + ((GPSPolygon)regions[0]).transcript + "\n";
                 }
             }
             else

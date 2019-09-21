@@ -56,8 +56,8 @@ public class GPS : MonoBehaviour
     public void UpdatePosition()
     {
         // uncomment these to fake the coordinates to walk up from the Creation Core
-        latitude = (float)35.039625 + 0.0001f * timesUpdated;
-        longitude = (float)135.728799;
+        latitude = (float)34.980133 + 0.0001f * timesUpdated;
+        longitude = (float)135.964286;
         //timesUpdated++;
         //Debug.Log("lat: " + latitude + " lon: " + longitude);
         //debugText.text = "lat: " + latitude + " lon: " + longitude;
