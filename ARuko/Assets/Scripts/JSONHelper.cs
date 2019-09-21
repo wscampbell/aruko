@@ -45,6 +45,10 @@ public class JSONHelper
     public static void addTourToRegion(string tourFilename)
     {
         List<GPSPolygon> gPolygons = JSONHelper.editourTourToGPSPolygons(tourFilename);
+        for (int i = 0; i < gPolygons.Count; i++)
+        {
+            gPolygons[i].index = i + 1;
+        }
         Regions.addAllPolygons(gPolygons);
     }
 }

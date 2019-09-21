@@ -9,6 +9,7 @@ public class GPSPolygon : IRegion
     public string name { get; set; }
     public string transcript;
     public AudioClip audioClip { get; set; }
+    public int index = 0;
 
     public GPSPolygon(List<GPSPoint> points, string name = "unnamed polygon")
     {

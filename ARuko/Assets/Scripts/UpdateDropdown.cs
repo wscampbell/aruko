@@ -9,6 +9,7 @@ public class UpdateDropdown : MonoBehaviour
     [SerializeField] Text regionName;
     [SerializeField] Image homeImage;
     [SerializeField] Text transcriptText;
+    [SerializeField] Text numberText;
     private int stepsSinceUpdate = 0;
     private const int maxStep = 60;
     private string regionNameText = "";
@@ -92,6 +93,7 @@ public class UpdateDropdown : MonoBehaviour
                     canvas.GetComponentInChildren<Dropdown>().SetOpen();
                     homeImage.sprite = firstImage.GetComponent<Image>().sprite;
                     transcriptText.text = "\n" + ((GPSPolygon)regions[0]).transcript + "\n";
+                    numberText.text = ((GPSPolygon)regions[0]).index.ToString() + "/" + Regions.length().ToString();
                 }
             }
             else
