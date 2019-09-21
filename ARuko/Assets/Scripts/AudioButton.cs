@@ -5,33 +5,39 @@ using UnityEngine;
 public class AudioButton : MonoBehaviour
 {
     public GameObject Play, Stop, Audio;
-    private bool AudioPlaying = false;
+    public AudioSource audioSource;
 
+    void Start()
+    {
+        Play.SetActive(true);
+        Stop.SetActive(false);
+        audioSource = Audio.GetComponent<AudioSource>();
+    }
+
+    // TODO check if this still makes sense
     public void SwapButtons()
     {
-        if (AudioPlaying)
+        if (audioSource.isPlaying)
         {
-            PauseButton();
+            audioSource.Pause();
         }
         else
         {
-            PlayButton();
+            audioSource.Play();
         }
     }
 
-    public void PauseButton()
+    void Update()
     {
-        AudioPlaying = false;
-        Audio.GetComponent<AudioSource>().Pause();
-        Play.SetActive(true);
-        Stop.SetActive(false);
-    }
-
-    public void PlayButton()
-    {
-        AudioPlaying = true;
-        Audio.GetComponent<AudioSource>().Play();
-        Play.SetActive(false);
-        Stop.SetActive(true);
+        if (audioSource.isPlaying)
+        {
+            Stop.SetActive(true);
+            Play.SetActive(false);
+        }
+        else
+        {
+            Play.SetActive(true);
+            Stop.SetActive(false);
+        }
     }
 }

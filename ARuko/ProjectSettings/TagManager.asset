@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Play
   - Stop
+  - Map
+  - Home
+  - Dropdown
   layers:
   - Default
   - TransparentFX

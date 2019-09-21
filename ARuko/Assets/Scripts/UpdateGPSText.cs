@@ -25,6 +25,7 @@ public class UpdateGPSText : MonoBehaviour
         setRegionText();
     }
 
+    // TODO get rid of this
     private void setBottomText()
     {
         stepsSinceUpdate++;
@@ -51,6 +52,7 @@ public class UpdateGPSText : MonoBehaviour
             {
                 stringBuilder.Append(region.name + "\n");
             }
+
             // TODO get rid of this code; was only for testing
             stringBuilder.Append("End of region list\n");
             stringBuilder.AppendLine(timesUpdated.ToString());
