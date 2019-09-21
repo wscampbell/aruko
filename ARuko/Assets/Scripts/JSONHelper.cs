@@ -46,5 +46,4 @@ public class JSONHelper
         List<GPSPolygon> gPolygons = JSONHelper.editourTourToGPSPolygons(tourFilename);
         Regions.addAllPolygons(gPolygons);
     }
-
 }
