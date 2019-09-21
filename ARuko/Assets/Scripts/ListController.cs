@@ -30,6 +30,7 @@ public class ListController : MonoBehaviour
             //Debug.Log("count: " + e.images.Count.ToString());
             //Debug.Log((e.images[0].Split('.'))[0]);
             counter++;
+            // TODO check to see if this works
             if (e.images.Count > 0)
             {
                 //Debug.Log("ritsu-tour/" + (e.images[0].Split('.'))[0]);
