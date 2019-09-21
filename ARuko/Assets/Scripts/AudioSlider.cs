@@ -18,7 +18,12 @@ public class AudioSlider : MonoBehaviour
 
     public void ChangeAudioTime()
     {
-       audioSource.time = audioSource.clip.length * slider.value;
+        audioSource.time = audioSource.clip.length * slider.value;
+    }
+
+    public void GoToBeginning()
+    {
+        slider.value = 0;
     }
 
     // Update is called once per frame
@@ -35,7 +40,7 @@ public class AudioSlider : MonoBehaviour
         string minutes = "0";
         string seconds = "00";
 
-        int timeInt = (int) audioTime;
+        int timeInt = (int)audioTime;
         if (timeInt < 60)
         {
             seconds = timeInt.ToString();
@@ -46,9 +51,9 @@ public class AudioSlider : MonoBehaviour
         }
         else
         {
-            minutes = (timeInt/60).ToString();
-            seconds = (timeInt%60).ToString();
-            if (timeInt%60 < 10)
+            minutes = (timeInt / 60).ToString();
+            seconds = (timeInt % 60).ToString();
+            if (timeInt % 60 < 10)
             {
                 seconds = "0" + seconds;
             }

@@ -7,7 +7,8 @@ public class ImageGallery : MonoBehaviour
 {
     [SerializeField] GameObject imageGallery;
     [SerializeField] GameObject Left, Right;
-    private int imageCount;
+    public int imageCount; // public so it can be set to zero when changing regions
+    public int activeImageCount = 0;
 
     void Start()
     {
@@ -18,12 +19,13 @@ public class ImageGallery : MonoBehaviour
 
     public void NextButton()
     {
-        if (imageCount + 1 < imageGallery.transform.childCount)
+        //if (imageCount + 1 < imageGallery.transform.childCount)
+        if (imageCount + 1 < activeImageCount)
         {
-            imageCount++; 
+            imageCount++;
             Debug.Log("NEXT");
             Left.SetActive(true);
-            if (imageCount + 1 == imageGallery.transform.childCount)
+            if (imageCount + 1 == activeImageCount)
             {
                 Right.SetActive(false);
             }

@@ -25,6 +25,7 @@ public class UpdateGPSText : MonoBehaviour
         setRegionText();
     }
 
+    // TODO get rid of this
     private void setBottomText()
     {
         stepsSinceUpdate++;

@@ -4,20 +4,16 @@ using UnityEngine.UI;
 
 public class GenerateUI : MonoBehaviour
 {
-    [SerializeField] GameObject buttonPrefab;
     [SerializeField] Transform menuPanel;
-    Camera ARCamera;
 
     private List<string> flatFiles = new List<string>();
     private List<Sprite> sprites = new List<Sprite>();
 
-    public static Dictionary<string, GameObject> buttonMap = new Dictionary<string, GameObject>();
+    public static Dictionary<string, GameObject> imageMap = new Dictionary<string, GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-        ARCamera = Camera.main;
-
         // retrieves image names from tour file
         EditourTour editourTour = JSONHelper.JSONToEditourTour(JSONHelper.JSONFromFilename("ritsu-tour"));
         foreach (EditourRegion editourRegion in editourTour.regions)
@@ -43,8 +39,16 @@ public class GenerateUI : MonoBehaviour
         // add buttons to dropdown
         for (int i = 0; i < sprites.Count; i++)
         {
-            GameObject button = (GameObject)Instantiate(buttonPrefab);
-            button.GetComponent<Image>().sprite = sprites[i];
+            //GameObject button = (GameObject)Instantiate(buttonPrefab);
+            GameObject gameObject = new GameObject();
+            Image image = gameObject.AddComponent<Image>();
+            image.sprite = sprites[i];
+            gameObject.transform.parent = menuPanel;
+            //gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, textures[i].height / textures[i].w, 1);
+            gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(900, 600);
+            gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+            imageMap.Add(flatFiles[i], gameObject);
+            /*
             int index = i;
             button.GetComponent<Button>().onClick.AddListener(
                 () =>
@@ -55,6 +59,7 @@ public class GenerateUI : MonoBehaviour
             button.transform.parent = menuPanel;
             button.GetComponent<RectTransform>().localScale = new Vector3(1, textures[i].height / textures[i].width, 1);
             buttonMap.Add(flatFiles[i], button);
+            */
         }
     }
 }
