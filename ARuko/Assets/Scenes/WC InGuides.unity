@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 338884723}
-  menuname: none
+  menuname: {fileID: 734698182}
   isOpen: 0
 --- !u!1 &359858293
 GameObject:
@@ -4622,6 +4622,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 338884729}
         m_MethodName: ToggleMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 338884729}
+        m_MethodName: ToggleHeader
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class Dropdown : MonoBehaviour
 {
     public RectTransform container; 
-    public string menuname;
-    public bool isOpen;
+    [SerializeField] Text menuname;
+    private string temp;
+    public bool isOpen = false;
 
     // Update is called once per frame
     void Update()
@@ -19,13 +20,21 @@ public class Dropdown : MonoBehaviour
 
     public void ToggleMenu()
     {
-        // used for old dropdown where text was changed on toggle
-        //this.GetComponentInChildren<Text>().text = isOpen ? "►" + menuname : "▼" + menuname;
         isOpen = isOpen ? false : true;
     }
 
     public void SetOpen()
     {
         isOpen = false;
+    }
+
+    public void ToggleHeader()
+    {
+        if (isOpen)
+        {
+            temp = menuname.text;
+        } 
+
+        menuname.text = isOpen ? "CHAPTERS" : temp;
     }
 }
