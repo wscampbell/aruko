@@ -14,6 +14,7 @@ public class AudioButton : MonoBehaviour
         audioSource = Audio.GetComponent<AudioSource>();
     }
 
+    // TODO check if this still makes sense
     public void SwapButtons()
     {
         if (audioSource.isPlaying)

@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class UpdateDropdown : MonoBehaviour
 {
-    public Text regionName;
+    [SerializeField] GameObject audioSlider;
+    [SerializeField] Text regionName;
+    [SerializeField] Image homeImage;
     private int stepsSinceUpdate = 0;
     private const int maxStep = 60;
+    private string regionNameText = "";
 
-    public AudioSource audioSource;
     public GameObject canvas;
 
     IRegion previousRegion = null;
@@ -22,6 +24,11 @@ public class UpdateDropdown : MonoBehaviour
     private void Update()
     {
         setRegionText();
+    }
+
+    public void setToRegionName()
+    {
+        regionName.text = regionNameText;
     }
 
     // this is to tell what region you are in for testing (will get rid of this)
@@ -46,14 +53,23 @@ public class UpdateDropdown : MonoBehaviour
                 {
                     Debug.Log(image);
                 }
-                regionName.text = regions[0].name;
-                audioSource.clip = ((GPSPolygon)regions[0]).audioClip;
+                canvas.GetComponent<AudioSource>().clip = ((GPSPolygon)regions[0]).audioClip;
 
-                foreach (KeyValuePair<string, GameObject> item in GenerateUI.buttonMap)
+                int activeImageCount = 0;
+
+                GameObject firstImage = null;
+
+                foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
                 {
+                    Debug.Log(item.Key);
                     if (names.Contains(item.Key))
                     {
                         item.Value.SetActive(true);
+                        activeImageCount++;
+                        if (firstImage == null)
+                        {
+                            firstImage = item.Value;
+                        }
                     }
                     else
                     {
@@ -61,18 +77,25 @@ public class UpdateDropdown : MonoBehaviour
                     }
                 }
 
-                // play if the region has changed
-                // TODO also reset audio slider before playing
+                // if the region has changed
                 if (regions[0] != previousRegion)
                 {
-                    canvas.GetComponent<AudioButton>().SwapButtons();
+                    regionNameText = regions[0].name;
+                    setToRegionName();
+                    audioSlider.GetComponent<AudioSlider>().GoToBeginning();
+                    canvas.GetComponentInChildren<AudioButton>().SwapButtons();
                     previousRegion = regions[0];
+                    // TODO actually test this
+                    this.GetComponent<ImageGallery>().imageCount = 0;
+                    this.GetComponent<ImageGallery>().activeImageCount = activeImageCount;
+                    canvas.GetComponentInChildren<Dropdown>().SetOpen();
+                    homeImage.sprite = firstImage.GetComponent<Image>().sprite;
                 }
             }
             else
             {
                 regionName.text = "you're nowhere";
-                foreach (KeyValuePair<string, GameObject> item in GenerateUI.buttonMap)
+                foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
                 {
                     item.Value.SetActive(false);
                     previousRegion = null;

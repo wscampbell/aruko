@@ -56,16 +56,16 @@ public class GPS : MonoBehaviour
     public void UpdatePosition()
     {
         // uncomment these to fake the coordinates to walk up from the Creation Core
-        //latitude = (float)34.979536 + 0.0001f * timesUpdated;
-        //longitude = (float)135.964277;
+        latitude = (float)35.039625 + 0.0001f * timesUpdated;
+        longitude = (float)135.728799;
         //timesUpdated++;
         //Debug.Log("lat: " + latitude + " lon: " + longitude);
         //debugText.text = "lat: " + latitude + " lon: " + longitude;
         //Debug.Log("times updated: " + timesUpdated);
-        
-        latitude = Input.location.lastData.latitude;
-        longitude = Input.location.lastData.longitude;
-        debugText.text = "lat: " + latitude + " lon: " + longitude + " len: " + Regions.length();
 
+        // TODO uncomment these
+        //latitude = Input.location.lastData.latitude;
+        //longitude = Input.location.lastData.longitude;
+        //debugText.text = "lat: " + latitude + " lon: " + longitude + " len: " + Regions.length();
     }
 }
