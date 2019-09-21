@@ -7,8 +7,10 @@ public class UpdateDropdown : MonoBehaviour
 {
     [SerializeField] GameObject audioSlider;
     [SerializeField] Text regionName;
+    [SerializeField] Image homeImage;
     private int stepsSinceUpdate = 0;
     private const int maxStep = 60;
+    private string regionNameText = "";
 
     public GameObject canvas;
 
@@ -22,6 +24,11 @@ public class UpdateDropdown : MonoBehaviour
     private void Update()
     {
         setRegionText();
+    }
+
+    public void setToRegionName()
+    {
+        regionName.text = regionNameText;
     }
 
     // this is to tell what region you are in for testing (will get rid of this)
@@ -46,10 +53,11 @@ public class UpdateDropdown : MonoBehaviour
                 {
                     Debug.Log(image);
                 }
-                regionName.text = regions[0].name;
                 canvas.GetComponent<AudioSource>().clip = ((GPSPolygon)regions[0]).audioClip;
 
                 int activeImageCount = 0;
+
+                GameObject firstImage = null;
 
                 foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
                 {
@@ -58,6 +66,10 @@ public class UpdateDropdown : MonoBehaviour
                     {
                         item.Value.SetActive(true);
                         activeImageCount++;
+                        if (firstImage == null)
+                        {
+                            firstImage = item.Value;
+                        }
                     }
                     else
                     {
@@ -65,15 +77,19 @@ public class UpdateDropdown : MonoBehaviour
                     }
                 }
 
-                // play if the region has changed
+                // if the region has changed
                 if (regions[0] != previousRegion)
                 {
+                    regionNameText = regions[0].name;
+                    setToRegionName();
                     audioSlider.GetComponent<AudioSlider>().GoToBeginning();
                     canvas.GetComponentInChildren<AudioButton>().SwapButtons();
                     previousRegion = regions[0];
                     // TODO actually test this
                     this.GetComponent<ImageGallery>().imageCount = 0;
                     this.GetComponent<ImageGallery>().activeImageCount = activeImageCount;
+                    canvas.GetComponentInChildren<Dropdown>().SetOpen();
+                    homeImage.sprite = firstImage.GetComponent<Image>().sprite;
                 }
             }
             else
