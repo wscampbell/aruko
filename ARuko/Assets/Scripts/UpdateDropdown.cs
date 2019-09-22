@@ -85,7 +85,8 @@ public class UpdateDropdown : MonoBehaviour
                     regionNameText = regions[0].name;
                     setToRegionName();
                     audioSlider.GetComponent<AudioSlider>().GoToBeginning();
-                    canvas.GetComponentInChildren<AudioButton>().SwapButtons();
+                    //canvas.GetComponentInChildren<AudioButton>().SwapButtons();
+                    canvas.GetComponentInChildren<AudioButton>().PlayAudio();
                     previousRegion = regions[0];
                     // TODO actually test this
                     this.GetComponent<ImageGallery>().imageCount = 0;

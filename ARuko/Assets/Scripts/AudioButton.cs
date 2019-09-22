@@ -27,6 +27,17 @@ public class AudioButton : MonoBehaviour
         }
     }
 
+    public void PauseAudio()
+    {
+        audioSource.Pause();
+    }
+
+    public void PlayAudio()
+    {
+        audioSource.Play();
+    }
+
+    // TODO does this really need to take place in the Update function?
     void Update()
     {
         if (audioSource.isPlaying)
