@@ -61,27 +61,28 @@ public class UpdateDropdown : MonoBehaviour
 
                 GameObject firstImage = null;
 
-                foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
-                {
-                    Debug.Log(item.Key);
-                    if (names.Contains(item.Key))
-                    {
-                        item.Value.SetActive(true);
-                        activeImageCount++;
-                        if (firstImage == null)
-                        {
-                            firstImage = item.Value;
-                        }
-                    }
-                    else
-                    {
-                        item.Value.SetActive(false);
-                    }
-                }
-
                 // if the region has changed
                 if (regions[0] != previousRegion)
                 {
+                    // keep images around
+                    foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
+                    {
+                        Debug.Log(item.Key);
+                        if (names.Contains(item.Key))
+                        {
+                            item.Value.SetActive(true);
+                            activeImageCount++;
+                            if (firstImage == null)
+                            {
+                                firstImage = item.Value;
+                            }
+                        }
+                        else
+                        {
+                            item.Value.SetActive(false);
+                        }
+                    }
+
                     regionNameText = regions[0].name;
                     setToRegionName();
                     audioSlider.GetComponent<AudioSlider>().GoToBeginning();
