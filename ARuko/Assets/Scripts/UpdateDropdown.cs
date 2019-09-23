@@ -101,11 +101,14 @@ public class UpdateDropdown : MonoBehaviour
             else
             {
                 regionName.text = "you're nowhere";
+                /*
                 foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
                 {
                     item.Value.SetActive(false);
                     previousRegion = null;
                 }
+                */
+                previousRegion = null;
             }
         }
     }

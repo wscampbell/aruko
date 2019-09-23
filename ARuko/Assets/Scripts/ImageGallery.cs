@@ -23,12 +23,6 @@ public class ImageGallery : MonoBehaviour
         if (imageCount + 1 < activeImageCount)
         {
             imageCount++;
-            Debug.Log("NEXT");
-            Left.SetActive(true);
-            if (imageCount + 1 == activeImageCount)
-            {
-                Right.SetActive(false);
-            }
         }
     }
 
@@ -37,12 +31,6 @@ public class ImageGallery : MonoBehaviour
         if (imageCount - 1 >= 0)
         {
             imageCount--;
-            Debug.Log("PREV");
-            Right.SetActive(true);
-            if (imageCount == 0)
-            {
-                Left.SetActive(false);
-            }
         }
     }
 
@@ -52,5 +40,17 @@ public class ImageGallery : MonoBehaviour
         Vector3 position = imageGallery.transform.localPosition;
         position.x = Mathf.Lerp(position.x, 0 - (900 * imageCount), Time.deltaTime * 12);
         imageGallery.transform.localPosition = position;
+
+        Right.SetActive(true);
+        if (imageCount + 1 == activeImageCount)
+        {
+            Right.SetActive(false);
+        }
+
+        Left.SetActive(true);
+        if (imageCount == 0)
+        {
+            Left.SetActive(false);
+        }
     }
 }
