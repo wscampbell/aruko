@@ -8,6 +8,8 @@ public class UpdateDropdown : MonoBehaviour
     [SerializeField] GameObject audioSlider;
     [SerializeField] Text regionName;
     [SerializeField] Image homeImage;
+    [SerializeField] Text transcriptText;
+    [SerializeField] Text numberText;
     private int stepsSinceUpdate = 0;
     private const int maxStep = 60;
     private string regionNameText = "";
@@ -59,47 +61,54 @@ public class UpdateDropdown : MonoBehaviour
 
                 GameObject firstImage = null;
 
-                foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
-                {
-                    Debug.Log(item.Key);
-                    if (names.Contains(item.Key))
-                    {
-                        item.Value.SetActive(true);
-                        activeImageCount++;
-                        if (firstImage == null)
-                        {
-                            firstImage = item.Value;
-                        }
-                    }
-                    else
-                    {
-                        item.Value.SetActive(false);
-                    }
-                }
-
                 // if the region has changed
                 if (regions[0] != previousRegion)
                 {
+                    // keep images around
+                    foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
+                    {
+                        Debug.Log(item.Key);
+                        if (names.Contains(item.Key))
+                        {
+                            item.Value.SetActive(true);
+                            activeImageCount++;
+                            if (firstImage == null)
+                            {
+                                firstImage = item.Value;
+                            }
+                        }
+                        else
+                        {
+                            item.Value.SetActive(false);
+                        }
+                    }
+
                     regionNameText = regions[0].name;
                     setToRegionName();
                     audioSlider.GetComponent<AudioSlider>().GoToBeginning();
-                    canvas.GetComponentInChildren<AudioButton>().SwapButtons();
+                    //canvas.GetComponentInChildren<AudioButton>().SwapButtons();
+                    canvas.GetComponentInChildren<AudioButton>().PlayAudio();
                     previousRegion = regions[0];
                     // TODO actually test this
                     this.GetComponent<ImageGallery>().imageCount = 0;
                     this.GetComponent<ImageGallery>().activeImageCount = activeImageCount;
                     canvas.GetComponentInChildren<Dropdown>().SetOpen();
                     homeImage.sprite = firstImage.GetComponent<Image>().sprite;
+                    transcriptText.text = "\n" + ((GPSPolygon)regions[0]).transcript + "\n";
+                    numberText.text = ((GPSPolygon)regions[0]).index.ToString() + "/" + Regions.length().ToString();
                 }
             }
             else
             {
                 regionName.text = "you're nowhere";
+                /*
                 foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
                 {
                     item.Value.SetActive(false);
                     previousRegion = null;
                 }
+                */
+                previousRegion = null;
             }
         }
     }

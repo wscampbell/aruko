@@ -39,27 +39,14 @@ public class GenerateUI : MonoBehaviour
         // add buttons to dropdown
         for (int i = 0; i < sprites.Count; i++)
         {
-            //GameObject button = (GameObject)Instantiate(buttonPrefab);
             GameObject gameObject = new GameObject();
             Image image = gameObject.AddComponent<Image>();
             image.sprite = sprites[i];
             gameObject.transform.parent = menuPanel;
-            //gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, textures[i].height / textures[i].w, 1);
+            // TODO make these images square
             gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(900, 600);
             gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             imageMap.Add(flatFiles[i], gameObject);
-            /*
-            int index = i;
-            button.GetComponent<Button>().onClick.AddListener(
-                () =>
-                {
-                    ARCamera.GetComponent<ModelSwap>().SwapPic(flatFiles[index].Split('.')[0]);
-                }
-            );
-            button.transform.parent = menuPanel;
-            button.GetComponent<RectTransform>().localScale = new Vector3(1, textures[i].height / textures[i].width, 1);
-            buttonMap.Add(flatFiles[i], button);
-            */
         }
     }
 }

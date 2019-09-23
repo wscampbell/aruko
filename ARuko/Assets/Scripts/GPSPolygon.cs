@@ -7,7 +7,9 @@ public class GPSPolygon : IRegion
     public List<GPSPoint> points { get; } = new List<GPSPoint>();
     public List<string> imageNames { get; } = new List<string>();
     public string name { get; set; }
+    public string transcript;
     public AudioClip audioClip { get; set; }
+    public int index = 0;
 
     public GPSPolygon(List<GPSPoint> points, string name = "unnamed polygon")
     {
@@ -15,12 +17,22 @@ public class GPSPolygon : IRegion
         this.name = name;
     }
 
+    // TODO remove this
     public GPSPolygon(List<GPSPoint> points, List<string> imageNames, AudioClip audioClip, string name)
     {
         this.points = points;
         this.name = name;
         this.audioClip = audioClip;
         this.imageNames = imageNames;
+    }
+
+    public GPSPolygon(List<GPSPoint> points, List<string> imageNames, AudioClip audioClip, string name, string transcript)
+    {
+        this.points = points;
+        this.name = name;
+        this.audioClip = audioClip;
+        this.imageNames = imageNames;
+        this.transcript = transcript;
     }
 
     public void clear()

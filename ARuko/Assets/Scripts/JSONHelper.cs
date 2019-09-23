@@ -27,7 +27,7 @@ public class JSONHelper
             Debug.Log("audio name: " + audioName);
             AudioClip audioClip = Resources.Load<AudioClip>("ritsu-tour/" + (audioName.Split('.'))[0]);
             eRegion.images.Sort();
-            return new GPSPolygon(editourCoordsToGPSPoints(eRegion.points), eRegion.images, audioClip, eRegion.name);
+            return new GPSPolygon(editourCoordsToGPSPoints(eRegion.points), eRegion.images, audioClip, eRegion.name, eRegion.transcript);
         }).ToList();
     }
 
@@ -45,6 +45,10 @@ public class JSONHelper
     public static void addTourToRegion(string tourFilename)
     {
         List<GPSPolygon> gPolygons = JSONHelper.editourTourToGPSPolygons(tourFilename);
+        for (int i = 0; i < gPolygons.Count; i++)
+        {
+            gPolygons[i].index = i + 1;
+        }
         Regions.addAllPolygons(gPolygons);
     }
 }
