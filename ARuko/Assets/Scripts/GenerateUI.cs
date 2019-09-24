@@ -36,15 +36,16 @@ public class GenerateUI : MonoBehaviour
             sprites.Add(sprite);
         }
 
-        // add buttons to dropdown
+        // add images to gallery
         for (int i = 0; i < sprites.Count; i++)
         {
             GameObject gameObject = new GameObject();
             Image image = gameObject.AddComponent<Image>();
             image.sprite = sprites[i];
+            gameObject.SetActive(false);
             gameObject.transform.parent = menuPanel;
             // TODO make these images square
-            gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(900, 600);
+            gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(900, 900);
             gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             imageMap.Add(flatFiles[i], gameObject);
         }

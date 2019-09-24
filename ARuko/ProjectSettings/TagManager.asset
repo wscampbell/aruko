@@ -9,6 +9,7 @@ TagManager:
   - Map
   - Home
   - Dropdown
+  - Info
   layers:
   - Default
   - TransparentFX

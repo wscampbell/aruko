@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="25" size="50.000000 28.710938" />
+    <ImageTarget name="TicketScan" size="50.000000 161.361008" />
+    <ImageTarget name="24" size="50.000000 28.125000" />
+    <ImageTarget name="23" size="50.000000 28.422619" />
+    <ImageTarget name="22" size="50.000000 28.125000" />
+    <ImageTarget name="21" size="50.000000 28.125000" />
+    <ImageTarget name="20" size="50.000000 28.670635" />
+    <ImageTarget name="19" size="50.000000 88.888885" />
+    <ImageTarget name="18" size="50.000000 28.385416" />
+    <ImageTarget name="17" size="50.000000 28.125000" />
+    <ImageTarget name="16" size="50.000000 88.888885" />
+    <ImageTarget name="15" size="50.000000 88.888885" />
+    <ImageTarget name="14" size="50.000000 88.888885" />
+    <ImageTarget name="13" size="50.000000 88.888885" />
+    <ImageTarget name="12" size="50.000000 28.125000" />
+    <ImageTarget name="11" size="50.000000 28.125000" />
+    <ImageTarget name="10" size="50.000000 88.888885" />
+    <ImageTarget name="09" size="50.000000 28.125000" />
+    <ImageTarget name="07" size="50.000000 88.888885" />
+    <ImageTarget name="06" size="50.000000 206.410263" />
+    <ImageTarget name="05" size="50.000000 33.333332" />
+    <ImageTarget name="04" size="50.000000 123.111115" />
+    <ImageTarget name="03" size="50.000000 88.493149" />
+    <ImageTarget name="02" size="50.000000 28.125000" />
+    <ImageTarget name="01" size="50.000000 88.888885" />
+    <ImageTarget name="08" size="50.000000 28.125000" />
+  </Tracking>
+</QCARConfig>
