@@ -104,7 +104,7 @@ public class UpdateDropdown : MonoBehaviour
                     previousRegion = null;
                 }
                 */
-                previousRegion = null;
+                //previousRegion = null;
             }
         }
     }
