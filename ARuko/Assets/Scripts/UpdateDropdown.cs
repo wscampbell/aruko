@@ -51,10 +51,6 @@ public class UpdateDropdown : MonoBehaviour
             {
                 // TODO get rid of this cast
                 List<string> names = ((GPSPolygon)regions[0]).imageNames;
-                foreach (string image in ((GPSPolygon)regions[0]).imageNames)
-                {
-                    Debug.Log(image);
-                }
                 canvas.GetComponent<AudioSource>().clip = ((GPSPolygon)regions[0]).audioClip;
 
                 int activeImageCount = 0;

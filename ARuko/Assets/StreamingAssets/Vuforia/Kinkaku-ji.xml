@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="25" size="50.000000 28.710938" />
     <ImageTarget name="TicketScan" size="50.000000 161.361008" />
     <ImageTarget name="24" size="50.000000 28.125000" />
     <ImageTarget name="23" size="50.000000 28.422619" />
@@ -26,6 +27,5 @@
     <ImageTarget name="02" size="50.000000 28.125000" />
     <ImageTarget name="01" size="50.000000 88.888885" />
     <ImageTarget name="08" size="50.000000 28.125000" />
-    <ImageTarget name="25" size="50.000000 28.125000" />
   </Tracking>
 </QCARConfig>
