@@ -64,8 +64,8 @@ public class GPS : MonoBehaviour
         //Debug.Log("times updated: " + timesUpdated);
 
         // TODO uncomment these
-        //latitude = Input.location.lastData.latitude;
-        //longitude = Input.location.lastData.longitude;
+        latitude = Input.location.lastData.latitude;
+        longitude = Input.location.lastData.longitude;
         debugText.text = "lat: " + latitude + " lon: " + longitude + " len: " + Regions.length();
     }
 }
