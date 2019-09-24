@@ -17,6 +17,7 @@ public class UpdateDropdown : MonoBehaviour
     public GameObject canvas;
 
     IRegion previousRegion = null;
+    public static IRegion chapterRegion = null;
 
     private void Start()
     {
@@ -43,22 +44,35 @@ public class UpdateDropdown : MonoBehaviour
             GPS.instance.UpdatePosition();
         }
 
+        // TODO update immediately if chapter region is selected
         if (stepsSinceUpdate == 0) // this means the GPS coordinates were just updated
         {
             GPSPoint point = new GPSPoint(GPS.instance.latitude, GPS.instance.longitude);
             List<IRegion> regions = Regions.enclosingRegions(point);
-            if (regions.Count != 0)
+
+            IRegion switchRegion = null;
+            if (chapterRegion != null)
+            {
+                switchRegion = chapterRegion;
+                Debug.Log("CHAPTER REGION SET: " + chapterRegion.name);
+            }
+            else if (regions.Count != 0)
+            {
+                switchRegion = regions[0];
+            }
+
+            if (switchRegion != null)
             {
                 // TODO get rid of this cast
-                List<string> names = ((GPSPolygon)regions[0]).imageNames;
-                canvas.GetComponent<AudioSource>().clip = ((GPSPolygon)regions[0]).audioClip;
+                List<string> names = ((GPSPolygon)switchRegion).imageNames;
+                canvas.GetComponent<AudioSource>().clip = ((GPSPolygon)switchRegion).audioClip;
 
                 int activeImageCount = 0;
 
                 GameObject firstImage = null;
 
                 // if the region has changed
-                if (regions[0] != previousRegion)
+                if (chapterRegion != null || (regions[0] != previousRegion))
                 {
                     // keep images around
                     foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
@@ -79,24 +93,28 @@ public class UpdateDropdown : MonoBehaviour
                         }
                     }
 
-                    regionNameText = regions[0].name;
+                    regionNameText = switchRegion.name;
                     setToRegionName();
                     audioSlider.GetComponent<AudioSlider>().GoToBeginning();
                     //canvas.GetComponentInChildren<AudioButton>().SwapButtons();
                     canvas.GetComponentInChildren<AudioButton>().PlayAudio();
-                    previousRegion = regions[0];
+                    if (chapterRegion == null)
+                    {
+                        previousRegion = regions[0];
+                    }
                     // TODO actually test this
                     this.GetComponent<ImageGallery>().imageCount = 0;
                     this.GetComponent<ImageGallery>().activeImageCount = activeImageCount;
                     canvas.GetComponentInChildren<Dropdown>().SetOpen();
                     homeImage.sprite = firstImage.GetComponent<Image>().sprite;
-                    transcriptText.text = "\n" + ((GPSPolygon)regions[0]).transcript + "\n";
-                    numberText.text = ((GPSPolygon)regions[0]).index.ToString() + "/" + Regions.length().ToString();
+                    transcriptText.text = "\n" + ((GPSPolygon)switchRegion).transcript + "\n";
+                    numberText.text = ((GPSPolygon)switchRegion).index.ToString() + "/" + Regions.length().ToString();
                 }
+                chapterRegion = null;
             }
             else
             {
-                regionName.text = "you're nowhere";
+                //regionName.text = "you're nowhere";
                 /*
                 foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
                 {

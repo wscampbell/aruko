@@ -42,15 +42,26 @@ public class ListController : MonoBehaviour
         }
         Debug.Log(chapters.Count);
 
+        counter = 0;
         foreach (Chapter c in chapters)
         {
             GameObject newChapter = Instantiate(listItemPrefab) as GameObject;
             ListItemController controller = newChapter.GetComponent<ListItemController>() as ListItemController;
+            Button button = newChapter.GetComponent<Button>() as Button;
+            int index = counter;
+            button.onClick.AddListener(() =>
+            {
+                Debug.Log(index);
+                Debug.Log(Regions.getRegion(index).name);
+                UpdateDropdown.chapterRegion = Regions.getRegion(index);
+                Debug.Log("chapter region name: " + UpdateDropdown.chapterRegion.name);
+            });
             controller.icon.sprite = c.icon;
             controller.itemName.text = c.itemName;
             controller.number.text = c.number;
             newChapter.transform.SetParent(contentPanel.transform);
             newChapter.transform.localScale = Vector3.one;
+            counter++;
         }
     }
 }

@@ -19,6 +19,11 @@ public class Regions
         }
     }
 
+    public static IRegion getRegion(int i)
+    {
+        return regions[i];
+    }
+
     public static void clear()
     {
         regions.Clear();
