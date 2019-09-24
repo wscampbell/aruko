@@ -45,7 +45,7 @@ public class UpdateDropdown : MonoBehaviour
         }
 
         // TODO update immediately if chapter region is selected
-        if (stepsSinceUpdate == 0) // this means the GPS coordinates were just updated
+        if (stepsSinceUpdate == 0 || chapterRegion != null) // this means the GPS coordinates were just updated
         {
             GPSPoint point = new GPSPoint(GPS.instance.latitude, GPS.instance.longitude);
             List<IRegion> regions = Regions.enclosingRegions(point);
@@ -65,8 +65,6 @@ public class UpdateDropdown : MonoBehaviour
             {
                 // TODO get rid of this cast
                 List<string> names = ((GPSPolygon)switchRegion).imageNames;
-                canvas.GetComponent<AudioSource>().clip = ((GPSPolygon)switchRegion).audioClip;
-
                 int activeImageCount = 0;
 
                 GameObject firstImage = null;
@@ -74,6 +72,9 @@ public class UpdateDropdown : MonoBehaviour
                 // if the region has changed
                 if (chapterRegion != null || (regions[0] != previousRegion))
                 {
+                    // switch the audio source
+                    canvas.GetComponent<AudioSource>().clip = ((GPSPolygon)switchRegion).audioClip;
+
                     // keep images around
                     foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
                     {
@@ -114,7 +115,7 @@ public class UpdateDropdown : MonoBehaviour
             }
             else
             {
-                //regionName.text = "you're nowhere";
+                regionName.text = "you're nowhere";
                 /*
                 foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
                 {

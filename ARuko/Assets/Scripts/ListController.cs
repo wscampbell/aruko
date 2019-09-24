@@ -51,10 +51,8 @@ public class ListController : MonoBehaviour
             int index = counter;
             button.onClick.AddListener(() =>
             {
-                Debug.Log(index);
-                Debug.Log(Regions.getRegion(index).name);
                 UpdateDropdown.chapterRegion = Regions.getRegion(index);
-                Debug.Log("chapter region name: " + UpdateDropdown.chapterRegion.name);
+                this.GetComponentInParent<ModeSwap>().SwapMode("Home");
             });
             controller.icon.sprite = c.icon;
             controller.itemName.text = c.itemName;
