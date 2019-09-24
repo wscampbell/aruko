@@ -34,6 +34,7 @@ public class ListController : MonoBehaviour
             if (e.images.Count > 0)
             {
                 //Debug.Log("ritsu-tour/" + (e.images[0].Split('.'))[0]);
+                Debug.Log("file: " + e.images[0]);
                 Texture2D texture = Resources.Load<Texture2D>("ritsu-tour/" + (e.images[0].Split('.'))[0]);
                 Debug.Log(texture);
                 Sprite sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0, 0));
