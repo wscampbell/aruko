@@ -8,7 +8,6 @@ public class GenerateUI : MonoBehaviour
 
     private List<string> flatFiles = new List<string>();
     private List<Sprite> sprites = new List<Sprite>();
-
     public static Dictionary<string, GameObject> imageMap = new Dictionary<string, GameObject>();
 
     // Start is called before the first frame update
@@ -21,7 +20,7 @@ public class GenerateUI : MonoBehaviour
             flatFiles.AddRange(editourRegion.images);
         }
 
-        // loads all images as Sprites for application to buttons
+        // loads all images as Sprites for image gallery
         List<Texture2D> textures = new List<Texture2D>();
         foreach (string flatFile in flatFiles)
         {
@@ -44,7 +43,6 @@ public class GenerateUI : MonoBehaviour
             image.sprite = sprites[i];
             gameObject.SetActive(false);
             gameObject.transform.parent = menuPanel;
-            // TODO make these images square
             gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(900, 900);
             gameObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             imageMap.Add(flatFiles[i], gameObject);

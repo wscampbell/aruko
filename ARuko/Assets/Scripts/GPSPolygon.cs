@@ -17,15 +17,6 @@ public class GPSPolygon : IRegion
         this.name = name;
     }
 
-    // TODO remove this
-    public GPSPolygon(List<GPSPoint> points, List<string> imageNames, AudioClip audioClip, string name)
-    {
-        this.points = points;
-        this.name = name;
-        this.audioClip = audioClip;
-        this.imageNames = imageNames;
-    }
-
     public GPSPolygon(List<GPSPoint> points, List<string> imageNames, AudioClip audioClip, string name, string transcript)
     {
         this.points = points;

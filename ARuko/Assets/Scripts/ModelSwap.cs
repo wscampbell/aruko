@@ -11,10 +11,11 @@ public class ModelSwap : MonoBehaviour
     {
         if (theTrackable == null)
         {
-            Debug.Log("Warning: Trackable not set !!");
+            Debug.Log("Warning: Trackable not set!!");
         }
     }
 
+    // swap the given model with the model currently attached to the ground plane
     public void SwapModelFromModel(GameObject model)
     {
         GameObject trackableGameObject = theTrackable.gameObject;
@@ -28,7 +29,7 @@ public class ModelSwap : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        // Re-parent the cube as child of the trackable gameObject
+        // Re-parent the model as child of the trackable gameObject
         model.transform.parent = theTrackable.transform;
 
         // Adjust the position and scale so that it fits nicely on the target
@@ -40,6 +41,7 @@ public class ModelSwap : MonoBehaviour
         model.SetActive(true);
     }
 
+    // swap a given model file with the model currently on the ground plane
     public void SwapModel(string filename)
     {
         // Create a simple cube object
@@ -47,12 +49,14 @@ public class ModelSwap : MonoBehaviour
         SwapModelFromModel(model);
     }
 
+    // make a cube with the given image on it, and swap it with the current ground plane model
     public void SwapPic(string filename)
     {
         GameObject model = PlaneMaker.makePicPlane("ritsu-tour", filename);
         SwapModelFromModel(model);
     }
 
+    // get the ground plane model to face the user
     public void orientModel()
     {
         GameObject trackableGameObject = theTrackable.gameObject;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// for the Play and Pause buttons for our audio
 public class AudioButton : MonoBehaviour
 {
     public GameObject Play, Stop, Audio;
@@ -14,7 +15,7 @@ public class AudioButton : MonoBehaviour
         audioSource = Audio.GetComponent<AudioSource>();
     }
 
-    // TODO check if this still makes sense
+    // called when you press either button. If the music is playing, pause it; if it's not, play it
     public void SwapButtons()
     {
         if (audioSource.isPlaying)
@@ -37,7 +38,8 @@ public class AudioButton : MonoBehaviour
         audioSource.Play();
     }
 
-    // TODO does this really need to take place in the Update function?
+    // ensures the correct button is displayed at all times
+    // particularly important for when audio file ends or is swapped on region change
     void Update()
     {
         if (audioSource.isPlaying)

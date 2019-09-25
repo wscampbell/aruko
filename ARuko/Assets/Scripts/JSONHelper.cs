@@ -29,7 +29,6 @@ public class JSONHelper
             // there should only be one audio file so just get the first
             // TODO get rid of the assumption that there has to be at least one audio file
             string audioName = eRegion.audio[0];
-            Debug.Log("audio name: " + audioName);
             AudioClip audioClip = Resources.Load<AudioClip>("ritsu-tour/" + (audioName.Split('.'))[0]);
             //eRegion.images.Sort();
             return new GPSPolygon(editourCoordsToGPSPoints(eRegion.points), eRegion.images, audioClip, eRegion.name, eRegion.transcript);

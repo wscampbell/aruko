@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// swaps between the different display modes
 public class ModeSwap : MonoBehaviour
 {
     // for toggling AR mode
     private Camera arCam;
 
+    // disable the AR Camera at the start so it isn't always searching while in other modes
     void Start()
     {
         arCam = Camera.main;
@@ -26,6 +28,7 @@ public class ModeSwap : MonoBehaviour
         for (int i = 0; i < this.transform.childCount; i++)
         {
             Transform child = this.transform.GetChild(i);
+            // always leave Dropdown active so it can be toggled from anywhere
             if (child.gameObject.tag == newMode || child.gameObject.tag == "Dropdown")
             {
                 child.gameObject.SetActive(true);
