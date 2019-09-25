@@ -2569,7 +2569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &344550965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4974,7 +4974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.102794595, g: 0.3063037, b: 0.3962264, a: 1}
+  m_Color: {r: 0.09019608, g: 0.25882354, b: 0.33333334, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -13895,6 +13895,7 @@ MonoBehaviour:
   homeImage: {fileID: 60377607}
   transcriptText: {fileID: 1437460316}
   numberText: {fileID: 849222655}
+  scrollRect: {fileID: 337222559}
   canvas: {fileID: 1696832850}
 --- !u!1001 &1830436854
 PrefabInstance:
@@ -15239,7 +15240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.09055714, g: 0.26978344, b: 0.3490566, a: 0}
+  m_Color: {r: 0.09019608, g: 0.25882354, b: 0.33333334, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -15682,7 +15683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.102794595, g: 0.3063037, b: 0.3962264, a: 1}
+  m_Color: {r: 0.09019608, g: 0.25882354, b: 0.33333334, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
