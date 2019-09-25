@@ -10,6 +10,7 @@ public class UpdateDropdown : MonoBehaviour
     [SerializeField] Image homeImage;
     [SerializeField] Text transcriptText;
     [SerializeField] Text numberText;
+    [SerializeField] ScrollRect scrollRect;
     private int stepsSinceUpdate = 0;
     private const int maxStep = 60;
     private string regionNameText = "";
@@ -107,12 +108,13 @@ public class UpdateDropdown : MonoBehaviour
                     homeImage.sprite = firstImage.GetComponent<Image>().sprite;
                     transcriptText.text = "\n" + ((GPSPolygon)switchRegion).transcript + "\n";
                     numberText.text = ((GPSPolygon)switchRegion).index.ToString() + "/" + Regions.length().ToString();
+                    scrollRect.verticalNormalizedPosition = 1;
                 }
                 chapterRegion = null;
             }
             else
             {
-                regionName.text = "you're nowhere";
+                //regionName.text = "you're nowhere";
             }
         }
     }
