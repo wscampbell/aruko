@@ -54,7 +54,6 @@ public class UpdateDropdown : MonoBehaviour
             if (chapterRegion != null)
             {
                 switchRegion = chapterRegion;
-                Debug.Log("CHAPTER REGION SET: " + chapterRegion.name);
             }
             else if (regions.Count != 0)
             {
@@ -78,7 +77,6 @@ public class UpdateDropdown : MonoBehaviour
                     // keep images around
                     foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
                     {
-                        Debug.Log(item.Key);
                         if (names.Contains(item.Key))
                         {
                             item.Value.SetActive(true);
@@ -97,7 +95,6 @@ public class UpdateDropdown : MonoBehaviour
                     regionNameText = switchRegion.name;
                     setToRegionName();
                     audioSlider.GetComponent<AudioSlider>().GoToBeginning();
-                    //canvas.GetComponentInChildren<AudioButton>().SwapButtons();
                     canvas.GetComponentInChildren<AudioButton>().PlayAudio();
                     if (chapterRegion == null)
                     {
@@ -116,14 +113,6 @@ public class UpdateDropdown : MonoBehaviour
             else
             {
                 regionName.text = "you're nowhere";
-                /*
-                foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
-                {
-                    item.Value.SetActive(false);
-                    previousRegion = null;
-                }
-                */
-                //previousRegion = null;
             }
         }
     }

@@ -9,6 +9,7 @@ public class ARButton : MonoBehaviour
     public GameObject GroundPlane;
     public PlaneFinderBehaviour PlaneFinder;
 
+    // allows you to toggle ground plane AR
     public void ToggleAR()
     {
         if (AREnabled)

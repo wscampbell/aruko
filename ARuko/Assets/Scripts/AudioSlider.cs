@@ -8,6 +8,7 @@ public class AudioSlider : MonoBehaviour
     public AudioSource audioSource;
     public Slider slider;
     public Text currTime, maxTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,16 +40,19 @@ public class AudioSlider : MonoBehaviour
     {
         string minutes = "0";
         string seconds = "00";
-
         int timeInt = (int)audioTime;
+
+        // if the audio time is under 60s, simply display it as is
         if (timeInt < 60)
         {
             seconds = timeInt.ToString();
+            // add a 0 to the front if it is under 10s so it looks correct in clocktime
             if (timeInt < 10)
             {
                 seconds = "0" + seconds;
             }
         }
+        // if audio time is more than 60s, need to turn it into mm:ss format
         else
         {
             minutes = (timeInt / 60).ToString();

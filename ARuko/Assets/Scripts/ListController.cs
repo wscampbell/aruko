@@ -10,7 +10,6 @@ public class ListController : MonoBehaviour
     public GameObject listItemPrefab;
 
     //ArrayList chaptersList;
-
     void Start()
     {
         populateChapters();
@@ -26,22 +25,15 @@ public class ListController : MonoBehaviour
         int counter = 0;
         foreach (EditourRegion e in editourRegions)
         {
-            //Debug.Log(e.name);
-            //Debug.Log("count: " + e.images.Count.ToString());
-            //Debug.Log((e.images[0].Split('.'))[0]);
             counter++;
             // TODO check to see if this works
             if (e.images.Count > 0)
             {
-                //Debug.Log("ritsu-tour/" + (e.images[0].Split('.'))[0]);
-                Debug.Log("file: " + e.images[0]);
                 Texture2D texture = Resources.Load<Texture2D>("ritsu-tour/" + (e.images[0].Split('.'))[0]);
-                Debug.Log(texture);
                 Sprite sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0, 0));
                 chapters.Add(new Chapter(sprite, counter.ToString(), e.name));
             }
         }
-        Debug.Log(chapters.Count);
 
         counter = 0;
         foreach (Chapter c in chapters)
