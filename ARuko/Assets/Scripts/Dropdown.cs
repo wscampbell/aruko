@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Dropdown : MonoBehaviour
 {
-    public RectTransform container; 
+    public RectTransform container;
     [SerializeField] Text menuname;
     public bool isOpen = false;
     private string temp;
@@ -30,13 +30,19 @@ public class Dropdown : MonoBehaviour
         isOpen = false;
     }
 
+    // opens the dropdown menu
+    public void SetOpenTrue()
+    {
+        isOpen = true;
+    }
+
     // sets the header text to CHAPTERS if the menu is open, or to what it was before if the menu has been closed
     public void ToggleHeader()
     {
         if (isOpen)
         {
             temp = menuname.text;
-        } 
+        }
 
         menuname.text = isOpen ? "CHAPTERS" : temp;
     }

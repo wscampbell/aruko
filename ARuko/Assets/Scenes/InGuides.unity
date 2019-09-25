@@ -3234,8 +3234,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 250.0921}
-  m_SizeDelta: {x: 850, y: 2039.2194}
+  m_AnchoredPosition: {x: 0, y: 149.62836}
+  m_SizeDelta: {x: 850, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &448034485
 MonoBehaviour:
@@ -4483,7 +4483,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 108.9}
-  m_SizeDelta: {x: 800, y: 0}
+  m_SizeDelta: {x: 800, y: 53.531597}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &591548203
 MonoBehaviour:
@@ -10862,10 +10862,10 @@ RectTransform:
   m_Father: {fileID: 2048799077}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 425, y: -1019.6097}
-  m_SizeDelta: {x: 850, y: 2039.2194}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1437460316
 MonoBehaviour:
@@ -10900,60 +10900,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Non diam phasellus vestibulum
-    lorem sed. Mauris ultrices eros in cursus turpis massa tincidunt dui. Sit amet
-    purus gravida quis blandit turpis cursus. Diam quam nulla porttitor massa id neque
-    aliquam. Orci eu lobortis elementum nibh tellus molestie nunc non blandit. Sit
-    amet mattis vulputate enim nulla aliquet porttitor lacus. Sed risus ultricies
-    tristique nulla aliquet. Sed elementum tempus egestas sed sed risus pretium quam.
-    Eget nullam non nisi est.
-
-
-    Quis varius quam quisque id diam vel quam. Ullamcorper malesuada proin libero
-    nunc consequat interdum. Et malesuada fames ac turpis egestas sed tempus urna.
-    Mauris vitae ultricies leo integer malesuada nunc. Tellus mauris a diam maecenas
-    sed enim. Sem integer vitae justo eget magna fermentum iaculis eu. Sapien et ligula
-    ullamcorper malesuada proin libero nunc consequat interdum. Eu turpis egestas
-    pretium aenean pharetra magna ac placerat. Tortor pretium viverra suspendisse
-    potenti nullam ac. Amet nisl suscipit adipiscing bibendum est ultricies integer
-    quis auctor. Sagittis id consectetur purus ut faucibus pulvinar. Porta lorem mollis
-    aliquam ut. Facilisis volutpat est velit egestas dui id. Mauris cursus mattis
-    molestie a iaculis at erat pellentesque. Non quam lacus suspendisse faucibus interdum
-    posuere lorem ipsum. Libero id faucibus nisl tincidunt eget nullam non nisi.
-
-
-    Lectus magna fringilla urna porttitor. Suspendisse interdum consectetur libero
-    id. Sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc.
-    At tempor commodo ullamcorper a lacus vestibulum. Velit ut tortor pretium viverra
-    suspendisse potenti nullam ac tortor. Blandit turpis cursus in hac habitasse platea
-    dictumst quisque sagittis. Proin libero nunc consequat interdum varius sit amet.
-    Curabitur vitae nunc sed velit dignissim sodales. Pretium lectus quam id leo in
-    vitae. Amet consectetur adipiscing elit ut aliquam purus sit amet. Aenean vel
-    elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Lectus
-    nulla at volutpat diam ut venenatis tellus in.
-
-
-    Sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Metus aliquam
-    eleifend mi in nulla posuere sollicitudin aliquam ultrices. Non curabitur gravida
-    arcu ac tortor dignissim convallis aenean et. Aliquam etiam erat velit scelerisque
-    in dictum non consectetur. Lorem donec massa sapien faucibus et molestie. Potenti
-    nullam ac tortor vitae purus faucibus ornare. Volutpat sed cras ornare arcu dui
-    vivamus. Eu ultrices vitae auctor eu augue ut lectus arcu. Integer malesuada nunc
-    vel risus commodo viverra maecenas accumsan lacus. Aenean et tortor at risus viverra
-    adipiscing at in. Mattis pellentesque id nibh tortor id aliquet lectus proin nibh.
-
-
-    Augue mauris augue neque gravida in fermentum et sollicitudin ac. Hac habitasse
-    platea dictumst vestibulum rhoncus est. Fermentum dui faucibus in ornare. Integer
-    feugiat scelerisque varius morbi. Pretium nibh ipsum consequat nisl vel pretium
-    lectus quam id. Nunc sed velit dignissim sodales ut eu sem. Tempus imperdiet nulla
-    malesuada pellentesque elit eget gravida cum sociis. Vitae sapien pellentesque
-    habitant morbi tristique senectus et netus. Felis eget velit aliquet sagittis
-    id consectetur purus. Facilisis sed odio morbi quis commodo. Nec ultrices dui
-    sapien eget mi proin sed libero enim. Quam pellentesque nec nam aliquam sem et
-    tortor consequat. Sagittis eu volutpat odio facilisis mauris. Bibendum at varius
-    vel pharetra vel turpis nunc eget lorem.'
+  m_Text: 
 --- !u!222 &1437460317
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11311,10 +11258,10 @@ RectTransform:
   m_Father: {fileID: 1578871333}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 107.89963, y: -108.899765}
+  m_SizeDelta: {x: 215.79926, y: 53.531597}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1529010490
 MonoBehaviour:
@@ -11893,10 +11840,10 @@ RectTransform:
   m_Father: {fileID: 591548202}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -26.765799}
+  m_SizeDelta: {x: 215.79926, y: 53.531597}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1578871334
 MonoBehaviour:
@@ -12375,7 +12322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1695743399
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14933,7 +14880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1930036145
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15543,10 +15490,10 @@ RectTransform:
   m_Father: {fileID: 448034484}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 425, y: -1019.6097}
-  m_SizeDelta: {x: 850, y: 2039.2194}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2048799078
 MonoBehaviour:

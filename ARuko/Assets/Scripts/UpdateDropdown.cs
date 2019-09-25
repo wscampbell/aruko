@@ -20,6 +20,8 @@ public class UpdateDropdown : MonoBehaviour
     IRegion previousRegion = null;
     public static IRegion chapterRegion = null;
 
+    private bool firstCheck = true;
+
     private void Start()
     {
         JSONHelper.addTourToRegion("ritsu-tour");
@@ -114,8 +116,13 @@ public class UpdateDropdown : MonoBehaviour
             }
             else
             {
+                if (firstCheck)
+                {
+                    canvas.GetComponentInChildren<Dropdown>().SetOpenTrue();
+                }
                 //regionName.text = "you're nowhere";
             }
+            firstCheck = false;
         }
     }
 }
