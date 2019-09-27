@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+#if PLATFORM_ANDROID
+using UnityEngine.Android;
+#endif
 
 public class GPS : MonoBehaviour
 {
@@ -13,11 +16,36 @@ public class GPS : MonoBehaviour
     private int timesUpdated = 0;
     public Text debugText;
 
+    GameObject dialog = null;
+
     private void Start()
     {
+#if PLATFORM_ANDROID
+        if (!Permission.HasUserAuthorizedPermission(Permission.Location))
+        {
+            Permission.RequestUserPermission(Permission.Location);
+            dialog = new GameObject();
+        }
+#endif
+
         instance = this;
         DontDestroyOnLoad(gameObject);
         StartCoroutine(StartLocationService());
+    }
+
+    void OnGUI()
+    {
+#if PLATFORM_ANDROID
+        if (!Permission.HasUserAuthorizedPermission(Permission.Location))
+        {
+            dialog.AddComponent<PermissionsRationaleDialog>();
+            return;
+        }
+        else if (dialog != null)
+        {
+            Destroy(dialog);
+        }
+#endif
     }
 
     private IEnumerator StartLocationService()
