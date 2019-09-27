@@ -7,7 +7,7 @@ public class PocketScript : MonoBehaviour
 {
     [SerializeField] GameObject pocketPanel;
     [SerializeField] Slider slider;
-    private bool lerpBack = true;
+    private bool lerpBack = false;
     // Start is called before the first frame update
     void Start()
     {
