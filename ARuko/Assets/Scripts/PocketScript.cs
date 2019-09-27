@@ -18,7 +18,7 @@ public class PocketScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (slider.value > 0.9)
+        if (slider.value > 0.95)
         {
             slider.value = 0;
             pocketPanel.SetActive(false);
@@ -39,5 +39,10 @@ public class PocketScript : MonoBehaviour
     {
         Debug.Log("ended drag");
         lerpBack = true;
+    }
+
+    public void activate()
+    {
+        pocketPanel.SetActive(true);
     }
 }
