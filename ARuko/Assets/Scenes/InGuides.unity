@@ -1147,7 +1147,7 @@ MonoBehaviour:
           m_StringArgument: Home
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1825156863}
+      - m_Target: {fileID: 0}
         m_MethodName: setToRegionName
         m_Mode: 1
         m_Arguments:
@@ -12184,6 +12184,7 @@ GameObject:
   - component: {fileID: 1661340901}
   - component: {fileID: 1661340900}
   - component: {fileID: 1661340903}
+  - component: {fileID: 1661340904}
   m_Layer: 5
   m_Name: Mode Panel
   m_TagString: Untagged
@@ -12276,6 +12277,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TranslationZone: {fileID: 1695743398}
+--- !u!114 &1661340904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661340898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d8845357f60747d8a7f54964c030b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSlider: {fileID: 774922610}
+  regionName: {fileID: 734698182}
+  homeImage: {fileID: 60377607}
+  transcriptText: {fileID: 1437460316}
+  numberText: {fileID: 849222655}
+  scrollRect: {fileID: 337222559}
+  homePanel: {fileID: 1825156857}
+  canvas: {fileID: 1696832850}
 --- !u!21 &1667407265
 Material:
   serializedVersion: 6
@@ -13735,7 +13756,6 @@ GameObject:
   - component: {fileID: 1825156859}
   - component: {fileID: 1825156860}
   - component: {fileID: 1825156861}
-  - component: {fileID: 1825156863}
   m_Layer: 5
   m_Name: Home Panel
   m_TagString: Untagged
@@ -13825,25 +13845,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825156857}
   m_CullTransparentMesh: 0
---- !u!114 &1825156863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825156857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d8845357f60747d8a7f54964c030b4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSlider: {fileID: 774922610}
-  regionName: {fileID: 734698182}
-  homeImage: {fileID: 60377607}
-  transcriptText: {fileID: 1437460316}
-  numberText: {fileID: 849222655}
-  scrollRect: {fileID: 337222559}
-  canvas: {fileID: 1696832850}
 --- !u!1001 &1830436854
 PrefabInstance:
   m_ObjectHideFlags: 0

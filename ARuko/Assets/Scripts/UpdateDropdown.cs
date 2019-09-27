@@ -11,6 +11,7 @@ public class UpdateDropdown : MonoBehaviour
     [SerializeField] Text transcriptText;
     [SerializeField] Text numberText;
     [SerializeField] ScrollRect scrollRect;
+    [SerializeField] GameObject homePanel;
     private int stepsSinceUpdate = 0;
     private const int maxStep = 60;
     private string regionNameText = "";
@@ -25,6 +26,7 @@ public class UpdateDropdown : MonoBehaviour
     private void Start()
     {
         JSONHelper.addTourToRegion("ritsu-tour");
+        //transcriptText.supportRichText = true;
     }
 
     private void Update()
@@ -104,8 +106,8 @@ public class UpdateDropdown : MonoBehaviour
                         previousRegion = regions[0];
                     }
                     // TODO actually test this
-                    this.GetComponent<ImageGallery>().imageCount = 0;
-                    this.GetComponent<ImageGallery>().activeImageCount = activeImageCount;
+                    homePanel.GetComponent<ImageGallery>().imageCount = 0;
+                    homePanel.GetComponent<ImageGallery>().activeImageCount = activeImageCount;
                     canvas.GetComponentInChildren<Dropdown>().SetOpen();
                     homeImage.sprite = firstImage.GetComponent<Image>().sprite;
                     transcriptText.text = "\n" + ((GPSPolygon)switchRegion).transcript + "\n";
