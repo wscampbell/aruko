@@ -19,7 +19,6 @@ public class ImageGallery : MonoBehaviour
 
     public void NextButton()
     {
-        //if (imageCount + 1 < imageGallery.transform.childCount)
         if (imageCount + 1 < activeImageCount)
         {
             imageCount++;
@@ -37,10 +36,12 @@ public class ImageGallery : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // animate the image gallery to show the correct image
         Vector3 position = imageGallery.transform.localPosition;
         position.x = Mathf.Lerp(position.x, 0 - (900 * imageCount), Time.deltaTime * 12);
         imageGallery.transform.localPosition = position;
 
+        // hide either arrow button if necessary
         Right.SetActive(true);
         if (imageCount + 1 == activeImageCount)
         {

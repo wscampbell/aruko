@@ -12,7 +12,12 @@ public class JSONHelper
 
     public static EditourTour JSONToEditourTour(string json)
     {
-        return (EditourTour)JsonUtility.FromJson(json, typeof(EditourTour));
+        EditourTour eTour = (EditourTour)JsonUtility.FromJson(json, typeof(EditourTour));
+        foreach (EditourRegion eRegion in eTour.regions)
+        {
+            eRegion.images.Sort();
+        }
+        return eTour;
     }
 
     public static List<GPSPolygon> editourTourToGPSPolygons(string tourFileName)
@@ -24,9 +29,8 @@ public class JSONHelper
             // there should only be one audio file so just get the first
             // TODO get rid of the assumption that there has to be at least one audio file
             string audioName = eRegion.audio[0];
-            Debug.Log("audio name: " + audioName);
             AudioClip audioClip = Resources.Load<AudioClip>("ritsu-tour/" + (audioName.Split('.'))[0]);
-            eRegion.images.Sort();
+            //eRegion.images.Sort();
             return new GPSPolygon(editourCoordsToGPSPoints(eRegion.points), eRegion.images, audioClip, eRegion.name, eRegion.transcript);
         }).ToList();
     }

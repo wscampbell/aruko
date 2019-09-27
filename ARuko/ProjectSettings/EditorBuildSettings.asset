@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/App.unity
+    path: Assets/Scenes/ARuko (Old).unity
     guid: af2b13f678cbde741bf9aeadd3cd8c89
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/InGuides.unity
     guid: f54f19c6f1e684d0b864356ffbb99ae2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/WC InGuides.unity
     guid: 68e8b910e77988d41adfa033a90d41c1
   m_configObjects: {}
