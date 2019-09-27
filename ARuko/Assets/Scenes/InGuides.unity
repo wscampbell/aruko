@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 4, g: 4, b: 4, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -2646,6 +2646,50 @@ RectTransform:
   m_AnchoredPosition: {x: 166.2, y: -166.7}
   m_SizeDelta: {x: 332.3, y: 83.4}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &356901859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 356901860}
+  - component: {fileID: 356901861}
+  m_Layer: 0
+  m_Name: KinkakujiHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &356901860
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356901859}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.004, y: 0.453, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1597054983}
+  m_Father: {fileID: 758091720}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &356901861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356901859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c947728f0fc144b7ea66c0740f2b436a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!21 &360009200
 Material:
   serializedVersion: 6
@@ -5629,7 +5673,7 @@ Transform:
   m_LocalPosition: {x: 1772.5693, y: -2.5252075, z: -199.44604}
   m_LocalScale: {x: 161.36101, y: 161.36101, z: 161.36101}
   m_Children:
-  - {fileID: 1597054983}
+  - {fileID: 356901860}
   m_Father: {fileID: 1196621627}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12514,7 +12558,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 758091720}
+    m_TransformParent: {fileID: 356901860}
     m_Modifications:
     - target: {fileID: -927199367670048503, guid: add61f534beec9f4c8c287da4511cb55,
         type: 3}
@@ -12524,17 +12568,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: add61f534beec9f4c8c287da4511cb55,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.276
+      value: 0.279
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: add61f534beec9f4c8c287da4511cb55,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.35
+      value: -0.012
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: add61f534beec9f4c8c287da4511cb55,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.031
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: add61f534beec9f4c8c287da4511cb55,
         type: 3}
@@ -12579,7 +12623,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: add61f534beec9f4c8c287da4511cb55,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 100
+      value: 99.999985
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: add61f534beec9f4c8c287da4511cb55,
         type: 3}
@@ -12589,7 +12633,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: add61f534beec9f4c8c287da4511cb55,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 100
+      value: 99.999985
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: add61f534beec9f4c8c287da4511cb55, type: 3}
