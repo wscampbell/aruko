@@ -21,9 +21,9 @@ public class GPS : MonoBehaviour
     private void Start()
     {
 #if PLATFORM_ANDROID
-        if (!Permission.HasUserAuthorizedPermission(Permission.Location))
+        if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
         {
-            Permission.RequestUserPermission(Permission.Location);
+            Permission.RequestUserPermission(Permission.FineLocation);
             dialog = new GameObject();
         }
 #endif
@@ -36,9 +36,9 @@ public class GPS : MonoBehaviour
     void OnGUI()
     {
 #if PLATFORM_ANDROID
-        if (!Permission.HasUserAuthorizedPermission(Permission.Location))
+        if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
         {
-            dialog.AddComponent<PermissionsRationaleDialog>();
+            //dialog.AddComponent<PermissionsRationaleDialog>();
             return;
         }
         else if (dialog != null)
