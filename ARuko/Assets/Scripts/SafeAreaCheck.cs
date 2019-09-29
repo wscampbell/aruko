@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SafeArea : MonoBehaviour
+public class SafeAreaCheck : MonoBehaviour
 {
     RectTransform Panel;
     Rect LastSafeArea = new Rect(0, 0, 0, 0);
