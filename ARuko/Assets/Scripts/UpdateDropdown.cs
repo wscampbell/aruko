@@ -120,7 +120,8 @@ public class UpdateDropdown : MonoBehaviour
             {
                 if (firstCheck)
                 {
-                    canvas.GetComponentInChildren<Dropdown>().SetOpenTrue();
+                    //canvas.GetComponentInChildren<Dropdown>().SetOpenTrue();
+                    chapterRegion = Regions.getRegion(0);
                 }
                 //regionName.text = "you're nowhere";
             }
