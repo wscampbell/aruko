@@ -16,6 +16,8 @@ public class GPS : MonoBehaviour
     private int timesUpdated = 0;
     public Text debugText;
 
+    public bool reportReal = false;
+
     GameObject dialog = null;
 
     private void Start()

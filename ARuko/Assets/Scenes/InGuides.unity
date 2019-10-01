@@ -678,6 +678,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7579435832223416038, guid: fa618295d5f58cf4195e8a336dad4d83,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1661340904}
+    - target: {fileID: 7579435832223416038, guid: fa618295d5f58cf4195e8a336dad4d83,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: startUpdating
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579435832223416038, guid: fa618295d5f58cf4195e8a336dad4d83,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa618295d5f58cf4195e8a336dad4d83, type: 3}
 --- !u!224 &68521327 stripped
@@ -3896,7 +3911,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 249.99959}
+  m_AnchoredPosition: {x: 0, y: 149.34212}
   m_SizeDelta: {x: 850, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &448034485
@@ -14903,6 +14918,7 @@ MonoBehaviour:
   numberText: {fileID: 849222655}
   scrollRect: {fileID: 337222559}
   homePanel: {fileID: 1825156857}
+  doUpdates: 0
   canvas: {fileID: 1696832850}
 --- !u!21 &1664106191
 Material:
@@ -15401,6 +15417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timesStarted: 0
   debugText: {fileID: 344550965}
+  reportReal: 0
 --- !u!114 &1696832857
 MonoBehaviour:
   m_ObjectHideFlags: 0
