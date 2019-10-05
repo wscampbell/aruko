@@ -6,6 +6,7 @@ using UnityEngine.UI;
 // swaps between the different display modes
 public class ModeSwap : MonoBehaviour
 {
+    [SerializeField] GameObject modePanel;
     // for toggling AR mode
     private Camera arCam;
 
@@ -25,9 +26,9 @@ public class ModeSwap : MonoBehaviour
         arCam.GetComponent<VuforiaMonoBehaviour>().enabled = false;
 
         // disable child modes, if it's the desired mode, enable it
-        for (int i = 0; i < this.transform.childCount; i++)
+        for (int i = 0; i < modePanel.transform.childCount; i++)
         {
-            Transform child = this.transform.GetChild(i);
+            Transform child = modePanel.transform.GetChild(i);
             // always leave Dropdown active so it can be toggled from anywhere
             if (child.gameObject.tag == newMode || child.gameObject.tag == "Dropdown")
             {
@@ -44,9 +45,9 @@ public class ModeSwap : MonoBehaviour
     public void ARMode()
     {
         // disable other modes
-        for (int i = 0; i < this.transform.childCount; i++)
+        for (int i = 0; i < modePanel.transform.childCount; i++)
         {
-            Transform child = this.transform.GetChild(i);
+            Transform child = modePanel.transform.GetChild(i);
             if (child.gameObject.tag == "Dropdown")
             {
                 continue;

@@ -11,9 +11,12 @@ public class UpdateDropdown : MonoBehaviour
     [SerializeField] Text transcriptText;
     [SerializeField] Text numberText;
     [SerializeField] ScrollRect scrollRect;
+    [SerializeField] GameObject homePanel;
     private int stepsSinceUpdate = 0;
     private const int maxStep = 60;
     private string regionNameText = "";
+
+    public bool doUpdates = false;
 
     public GameObject canvas;
 
@@ -22,9 +25,15 @@ public class UpdateDropdown : MonoBehaviour
 
     private bool firstCheck = true;
 
+    public void startUpdating()
+    {
+        doUpdates = true;
+    }
+
     private void Start()
     {
         JSONHelper.addTourToRegion("ritsu-tour");
+        //transcriptText.supportRichText = true;
     }
 
     private void Update()
@@ -40,89 +49,93 @@ public class UpdateDropdown : MonoBehaviour
     // this is to tell what region you are in for testing (will get rid of this)
     private void setRegionText()
     {
-        stepsSinceUpdate++;
-        if (stepsSinceUpdate >= maxStep)
+        if (doUpdates)
         {
-            stepsSinceUpdate = 0;
-            GPS.instance.UpdatePosition();
-        }
-
-        // TODO update immediately if chapter region is selected
-        if (stepsSinceUpdate == 0 || chapterRegion != null) // this means the GPS coordinates were just updated
-        {
-            GPSPoint point = new GPSPoint(GPS.instance.latitude, GPS.instance.longitude);
-            List<IRegion> regions = Regions.enclosingRegions(point);
-
-            IRegion switchRegion = null;
-            if (chapterRegion != null)
+            stepsSinceUpdate++;
+            if (stepsSinceUpdate >= maxStep)
             {
-                switchRegion = chapterRegion;
-            }
-            else if (regions.Count != 0)
-            {
-                switchRegion = regions[0];
+                stepsSinceUpdate = 0;
+                GPS.instance.UpdatePosition();
             }
 
-            if (switchRegion != null)
+            // TODO update immediately if chapter region is selected
+            if (stepsSinceUpdate == 0 || chapterRegion != null) // this means the GPS coordinates were just updated
             {
-                // TODO get rid of this cast
-                List<string> names = ((GPSPolygon)switchRegion).imageNames;
-                int activeImageCount = 0;
+                GPSPoint point = new GPSPoint(GPS.instance.latitude, GPS.instance.longitude);
+                List<IRegion> regions = Regions.enclosingRegions(point);
 
-                GameObject firstImage = null;
-
-                // if the region has changed
-                if (chapterRegion != null || (regions[0] != previousRegion))
+                IRegion switchRegion = null;
+                if (chapterRegion != null)
                 {
-                    // switch the audio source
-                    canvas.GetComponent<AudioSource>().clip = ((GPSPolygon)switchRegion).audioClip;
+                    switchRegion = chapterRegion;
+                }
+                else if (regions.Count != 0)
+                {
+                    switchRegion = regions[0];
+                }
 
-                    // keep images around
-                    foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
+                if (switchRegion != null)
+                {
+                    // TODO get rid of this cast
+                    List<string> names = ((GPSPolygon)switchRegion).imageNames;
+                    int activeImageCount = 0;
+
+                    GameObject firstImage = null;
+
+                    // if the region has changed
+                    if (chapterRegion != null || (regions[0] != previousRegion))
                     {
-                        if (names.Contains(item.Key))
+                        // switch the audio source
+                        canvas.GetComponent<AudioSource>().clip = ((GPSPolygon)switchRegion).audioClip;
+
+                        // keep images around
+                        foreach (KeyValuePair<string, GameObject> item in GenerateUI.imageMap)
                         {
-                            item.Value.SetActive(true);
-                            activeImageCount++;
-                            if (firstImage == null)
+                            if (names.Contains(item.Key))
                             {
-                                firstImage = item.Value;
+                                item.Value.SetActive(true);
+                                activeImageCount++;
+                                if (firstImage == null)
+                                {
+                                    firstImage = item.Value;
+                                }
+                            }
+                            else
+                            {
+                                item.Value.SetActive(false);
                             }
                         }
-                        else
-                        {
-                            item.Value.SetActive(false);
-                        }
-                    }
 
-                    regionNameText = switchRegion.name;
-                    setToRegionName();
-                    audioSlider.GetComponent<AudioSlider>().GoToBeginning();
-                    canvas.GetComponentInChildren<AudioButton>().PlayAudio();
-                    if (chapterRegion == null)
-                    {
-                        previousRegion = regions[0];
+                        regionNameText = switchRegion.name;
+                        setToRegionName();
+                        audioSlider.GetComponent<AudioSlider>().GoToBeginning();
+                        canvas.GetComponentInChildren<AudioButton>().PlayAudio();
+                        if (chapterRegion == null)
+                        {
+                            previousRegion = regions[0];
+                        }
+                        // TODO actually test this
+                        homePanel.GetComponent<ImageGallery>().imageCount = 0;
+                        homePanel.GetComponent<ImageGallery>().activeImageCount = activeImageCount;
+                        canvas.GetComponentInChildren<Dropdown>().SetOpen();
+                        homeImage.sprite = firstImage.GetComponent<Image>().sprite;
+                        transcriptText.text = "\n" + ((GPSPolygon)switchRegion).transcript + "\n";
+                        numberText.text = ((GPSPolygon)switchRegion).index.ToString() + "/" + Regions.length().ToString();
+                        scrollRect.verticalNormalizedPosition = 1;
                     }
-                    // TODO actually test this
-                    this.GetComponent<ImageGallery>().imageCount = 0;
-                    this.GetComponent<ImageGallery>().activeImageCount = activeImageCount;
-                    canvas.GetComponentInChildren<Dropdown>().SetOpen();
-                    homeImage.sprite = firstImage.GetComponent<Image>().sprite;
-                    transcriptText.text = "\n" + ((GPSPolygon)switchRegion).transcript + "\n";
-                    numberText.text = ((GPSPolygon)switchRegion).index.ToString() + "/" + Regions.length().ToString();
-                    scrollRect.verticalNormalizedPosition = 1;
+                    chapterRegion = null;
                 }
-                chapterRegion = null;
-            }
-            else
-            {
-                if (firstCheck)
+                else
                 {
-                    canvas.GetComponentInChildren<Dropdown>().SetOpenTrue();
+                    if (firstCheck)
+                    {
+                        //canvas.GetComponentInChildren<Dropdown>().SetOpenTrue();
+                        chapterRegion = Regions.getRegion(0);
+                    }
+                    //regionName.text = "you're nowhere";
                 }
-                //regionName.text = "you're nowhere";
+                firstCheck = false;
             }
-            firstCheck = false;
         }
     }
 }
